@@ -1,0 +1,5 @@
+CXXFLAGS = $(CXXFLAGS)
+HEADER_SEARCH_PATHS=/nix/store/m5sqdkxmi2rgmakqsw05vxa1pl3gyq47-ginac-1.8.3/include /nix/store/q5f7pb3a0z1j7s1szm02kysjad07cdcn-cln-1.3.6/include 
+OTHER_LDFLAGS = -lginac -lcln $(NIX_LDFLAGS)
+CLANG_CXX_LIBRARY=libc++
+CLANG_CXX_LANGUAGE_STANDARD=c++11

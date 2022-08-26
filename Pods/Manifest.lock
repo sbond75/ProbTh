@@ -1,0 +1,21 @@
+PODS:
+  - Bow (0.8.0)
+  - BowGeneric (0.8.0):
+    - Bow (~> 0.8.0)
+
+DEPENDENCIES:
+  - Bow (~> 0.8.0)
+  - BowGeneric (~> 0.8.0)
+
+SPEC REPOS:
+  trunk:
+    - Bow
+    - BowGeneric
+
+SPEC CHECKSUMS:
+  Bow: a709b8d14ac59d7f1d2f8388891c8632628e7575
+  BowGeneric: 6692347e82564a922f1e8db3fcd3dbf08e889514
+
+PODFILE CHECKSUM: 84362fdccd009ad38b0ef554cd1253287326c99c
+
+COCOAPODS: 1.9.1

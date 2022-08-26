@@ -1,0 +1,6 @@
+framework module Pods_ProbTh {
+  umbrella header "Pods-ProbTh-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module BowGeneric {
+  umbrella header "BowGeneric-umbrella.h"
+
+  export *
+  module * { export * }
+}

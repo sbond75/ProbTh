@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3090179A28B67A93002EA19A /* SampleOrPopulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3090179928B67A93002EA19A /* SampleOrPopulation.swift */; };
+		30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */; };
+		30D3291A28AC193C00150DE2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3291928AC193C00150DE2 /* main.swift */; };
+		30D3292128AC23C500150DE2 /* Theory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292028AC23C500150DE2 /* Theory.swift */; };
+		30D3292328AC274F00150DE2 /* AxiomsOfProbability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292228AC274F00150DE2 /* AxiomsOfProbability.swift */; };
+		30D3292528AC984400150DE2 /* Etc+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292428AC984400150DE2 /* Etc+Hashable.swift */; };
+		30D3292728B18AEB00150DE2 /* ConditionalProb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292628B18AEB00150DE2 /* ConditionalProb.swift */; };
+		30D3292928B190DD00150DE2 /* RandomVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292828B190DD00150DE2 /* RandomVar.swift */; };
+		30D3292B28B1926A00150DE2 /* CDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292A28B1926A00150DE2 /* CDF.swift */; };
+		30D3292D28B1983200150DE2 /* PMF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292C28B1983200150DE2 /* PMF.swift */; };
+		4C9E88CA577D0CB9796B2F20 /* Pods_ProbTh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF911D77F5375479C17AAA7 /* Pods_ProbTh.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		30D3291428AC193C00150DE2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3090179928B67A93002EA19A /* SampleOrPopulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleOrPopulation.swift; sourceTree = "<group>"; };
+		30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitativeOrQualitative.swift; sourceTree = "<group>"; };
+		30D3291628AC193C00150DE2 /* ProbTh */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProbTh; sourceTree = BUILT_PRODUCTS_DIR; };
+		30D3291928AC193C00150DE2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		30D3292028AC23C500150DE2 /* Theory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theory.swift; sourceTree = "<group>"; };
+		30D3292228AC274F00150DE2 /* AxiomsOfProbability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxiomsOfProbability.swift; sourceTree = "<group>"; };
+		30D3292428AC984400150DE2 /* Etc+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Etc+Hashable.swift"; sourceTree = "<group>"; };
+		30D3292628B18AEB00150DE2 /* ConditionalProb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalProb.swift; sourceTree = "<group>"; };
+		30D3292828B190DD00150DE2 /* RandomVar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomVar.swift; sourceTree = "<group>"; };
+		30D3292A28B1926A00150DE2 /* CDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDF.swift; sourceTree = "<group>"; };
+		30D3292C28B1983200150DE2 /* PMF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMF.swift; sourceTree = "<group>"; };
+		30D3292E28B528B300150DE2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		85BB65CF37C88EC3F09137D7 /* Pods-ProbTh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProbTh.debug.xcconfig"; path = "Target Support Files/Pods-ProbTh/Pods-ProbTh.debug.xcconfig"; sourceTree = "<group>"; };
+		DB5BF1A19FC7EAB2BEC3F70B /* Pods-ProbTh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProbTh.release.xcconfig"; path = "Target Support Files/Pods-ProbTh/Pods-ProbTh.release.xcconfig"; sourceTree = "<group>"; };
+		FAF911D77F5375479C17AAA7 /* Pods_ProbTh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProbTh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		30D3291328AC193C00150DE2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C9E88CA577D0CB9796B2F20 /* Pods_ProbTh.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0DAE1F35DB2F256174852D07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85BB65CF37C88EC3F09137D7 /* Pods-ProbTh.debug.xcconfig */,
+				DB5BF1A19FC7EAB2BEC3F70B /* Pods-ProbTh.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3090179828B67A4F002EA19A /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				3090179928B67A93002EA19A /* SampleOrPopulation.swift */,
+				30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		30D3290D28AC193C00150DE2 = {
+			isa = PBXGroup;
+			children = (
+				30D3292E28B528B300150DE2 /* Config.xcconfig */,
+				30D3291828AC193C00150DE2 /* ProbTh */,
+				30D3291728AC193C00150DE2 /* Products */,
+				0DAE1F35DB2F256174852D07 /* Pods */,
+				B9EDFBA8DE8D8D7B892B01DC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		30D3291728AC193C00150DE2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				30D3291628AC193C00150DE2 /* ProbTh */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		30D3291828AC193C00150DE2 /* ProbTh */ = {
+			isa = PBXGroup;
+			children = (
+				3090179828B67A4F002EA19A /* Stats */,
+				30D3291928AC193C00150DE2 /* main.swift */,
+				30D3292028AC23C500150DE2 /* Theory.swift */,
+				30D3292228AC274F00150DE2 /* AxiomsOfProbability.swift */,
+				30D3292428AC984400150DE2 /* Etc+Hashable.swift */,
+				30D3292628B18AEB00150DE2 /* ConditionalProb.swift */,
+				30D3292828B190DD00150DE2 /* RandomVar.swift */,
+				30D3292A28B1926A00150DE2 /* CDF.swift */,
+				30D3292C28B1983200150DE2 /* PMF.swift */,
+			);
+			path = ProbTh;
+			sourceTree = "<group>";
+		};
+		B9EDFBA8DE8D8D7B892B01DC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAF911D77F5375479C17AAA7 /* Pods_ProbTh.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		30D3291528AC193C00150DE2 /* ProbTh */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30D3291D28AC193C00150DE2 /* Build configuration list for PBXNativeTarget "ProbTh" */;
+			buildPhases = (
+				CD49202AA812D4CE36D791E7 /* [CP] Check Pods Manifest.lock */,
+				30D3291228AC193C00150DE2 /* Sources */,
+				30D3291328AC193C00150DE2 /* Frameworks */,
+				30D3291428AC193C00150DE2 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProbTh;
+			productName = ProbTh;
+			productReference = 30D3291628AC193C00150DE2 /* ProbTh */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		30D3290E28AC193C00150DE2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = sbond75;
+				TargetAttributes = {
+					30D3291528AC193C00150DE2 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = 30D3291128AC193C00150DE2 /* Build configuration list for PBXProject "ProbTh" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 30D3290D28AC193C00150DE2;
+			productRefGroup = 30D3291728AC193C00150DE2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				30D3291528AC193C00150DE2 /* ProbTh */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CD49202AA812D4CE36D791E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProbTh-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		30D3291228AC193C00150DE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30D3292B28B1926A00150DE2 /* CDF.swift in Sources */,
+				30D3292528AC984400150DE2 /* Etc+Hashable.swift in Sources */,
+				30D3292728B18AEB00150DE2 /* ConditionalProb.swift in Sources */,
+				30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */,
+				30D3292928B190DD00150DE2 /* RandomVar.swift in Sources */,
+				30D3292128AC23C500150DE2 /* Theory.swift in Sources */,
+				30D3292328AC274F00150DE2 /* AxiomsOfProbability.swift in Sources */,
+				30D3291A28AC193C00150DE2 /* main.swift in Sources */,
+				30D3292D28B1983200150DE2 /* PMF.swift in Sources */,
+				3090179A28B67A93002EA19A /* SampleOrPopulation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		30D3291B28AC193C00150DE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		30D3291C28AC193C00150DE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		30D3291E28AC193C00150DE2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85BB65CF37C88EC3F09137D7 /* Pods-ProbTh.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86HDH9K924;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		30D3291F28AC193C00150DE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB5BF1A19FC7EAB2BEC3F70B /* Pods-ProbTh.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 86HDH9K924;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30D3291128AC193C00150DE2 /* Build configuration list for PBXProject "ProbTh" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D3291B28AC193C00150DE2 /* Debug */,
+				30D3291C28AC193C00150DE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30D3291D28AC193C00150DE2 /* Build configuration list for PBXNativeTarget "ProbTh" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30D3291E28AC193C00150DE2 /* Debug */,
+				30D3291F28AC193C00150DE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 30D3290E28AC193C00150DE2 /* Project object */;
+}
