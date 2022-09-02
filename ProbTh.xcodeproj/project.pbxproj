@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3071C74928BFE2F400B07AEE /* HW1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74828BFE2F400B07AEE /* HW1.swift */; };
+		3071C74C28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */; };
 		3090179A28B67A93002EA19A /* SampleOrPopulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3090179928B67A93002EA19A /* SampleOrPopulation.swift */; };
 		30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */; };
 		30D3291A28AC193C00150DE2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3291928AC193C00150DE2 /* main.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3071C74828BFE2F400B07AEE /* HW1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW1.swift; sourceTree = "<group>"; };
+		3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Additions.swift"; sourceTree = "<group>"; };
 		3090179928B67A93002EA19A /* SampleOrPopulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleOrPopulation.swift; sourceTree = "<group>"; };
 		30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitativeOrQualitative.swift; sourceTree = "<group>"; };
 		30D3291628AC193C00150DE2 /* ProbTh */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProbTh; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +75,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		3071C74728BFE2EA00B07AEE /* HW */ = {
+			isa = PBXGroup;
+			children = (
+				3071C74828BFE2F400B07AEE /* HW1.swift */,
+			);
+			path = HW;
+			sourceTree = "<group>";
+		};
+		3071C74A28BFE4A300B07AEE /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
 		3090179828B67A4F002EA19A /* Stats */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +122,8 @@
 		30D3291828AC193C00150DE2 /* ProbTh */ = {
 			isa = PBXGroup;
 			children = (
+				3071C74A28BFE4A300B07AEE /* lib */,
+				3071C74728BFE2EA00B07AEE /* HW */,
 				3090179828B67A4F002EA19A /* Stats */,
 				30D3291928AC193C00150DE2 /* main.swift */,
 				30D3292028AC23C500150DE2 /* Theory.swift */,
@@ -208,11 +230,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				30D3292B28B1926A00150DE2 /* CDF.swift in Sources */,
+				3071C74C28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift in Sources */,
 				30D3292528AC984400150DE2 /* Etc+Hashable.swift in Sources */,
 				30D3292728B18AEB00150DE2 /* ConditionalProb.swift in Sources */,
 				30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */,
 				30D3292928B190DD00150DE2 /* RandomVar.swift in Sources */,
 				30D3292128AC23C500150DE2 /* Theory.swift in Sources */,
+				3071C74928BFE2F400B07AEE /* HW1.swift in Sources */,
 				30D3292328AC274F00150DE2 /* AxiomsOfProbability.swift in Sources */,
 				30D3291A28AC193C00150DE2 /* main.swift in Sources */,
 				30D3292D28B1983200150DE2 /* PMF.swift in Sources */,

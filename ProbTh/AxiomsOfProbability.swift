@@ -45,9 +45,30 @@ class EventSpace: Set, Theory {
 typealias F = EventSpace
 typealias ℱ = F
 
-// Real numbers
-typealias R = Double
+// Real numbers //
+//typealias R = NSDecimalNumber
+typealias R = Decimal // https://developer.apple.com/documentation/foundation/decimal , base-10 number
 typealias ℝ = R
+
+//typealias R = Double
+//func ℝtoDouble(_ ℝ: ℝ) -> Double {
+//    return ℝ
+//}
+
+func ℝtoDouble(_ ℝ: ℝ) -> Double {
+    return NSDecimalNumber(decimal: ℝ).doubleValue
+}
+// //
+
+// General ℝ functions
+extension ℝ {
+    var integerAndFractionParts: (ℝ, ℝ) {
+        let value = self
+        let doubleValue = ℝtoDouble(value)
+        let integerPart = floor(doubleValue)
+        return (ℝ(integerPart), ℝ(doubleValue - integerPart))
+    }
+}
 
 typealias P = Function1<ℱ, __0iTo1i>
 
@@ -72,6 +93,11 @@ class Event: Set, Theory {
     var properties: [Property] = [
         #"self ⊆ Ω"#
     ]
+    
+    func complement() -> Event {
+        fatalError() // TODO: implement
+//        return Ω.set.intersection(self.set)
+    }
     
     let Ω: Ω
 }

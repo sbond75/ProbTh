@@ -23,7 +23,7 @@ class SampleOrPopulation_impl: SampleOrPopulation {
     var mean: ℝ { sampleOrPopulation.reduce(0, {acc, x_i in acc + x_i}) / ℝ(nOrN) }
     var variance: ℝ { fatalError() }
     // Standard deviation
-    var stdev: ℝ { sqrt(variance) }
+    var stdev: ℝ { ℝ(sqrt(ℝtoDouble(variance))) }
     
     var sampleOrPopulation = [ℝ]() // aka "X"
     
@@ -46,17 +46,32 @@ class SampleOrPopulation_impl: SampleOrPopulation {
         return abs(b) * S_x.stdev
     }
     
-    func pthPercentile(p: __0iTo1i) -> ℝ {
-        var i: ℝ = p.ℝ_0to1 * ℝ(1 + nOrN)
-        i -= 1 // Adjust for 0-based indexing
+    func pthPercentileAndIts1BasedIndex(p: __0iTo1i) -> (ℝ
+        , (Int, Int) /* <--any of these integers are the p-th percentile's 1-based index if these integers are equal; otherwise, these integers are the 1-based indices of the two numbers that were "merged" to form the p-th percentile. */) {
+        let i: Double = ℝtoDouble(p.ℝ_0to1 * ℝ(1 + nOrN))
+        //i -= 1 // Adjust for 0-based indexing
         if floor(i) == i {
             // i is a whole number
-            return sorted[Int(i)]
+            let iInt = Int(i)
+            if iInt <= sorted.count { // This `if` check is needed for when `p == 1`. If so, the body of this if statement will not be executed.
+                return (sorted.i(iInt)
+                , (iInt, iInt))
+            }
+            return (sorted.last!, (sorted.count, sorted.count))
         }
         else {
             // i is not a whole number
-            return (sorted[Int(ceil(i))] + sorted[Int(floor(i))]) / 2
+            let ceiled = Int(ceil(i))
+            let floored = Int(floor(i))
+            if ceiled <= sorted.count {  // This `if` check is needed for when `p == 0.99`. If so, the body of this if statement will not be executed.
+                return ((sorted.i(ceiled) + sorted.i(floored)) / 2
+                , (ceiled, floored))
+            }
+            return (sorted.last!, (sorted.count, sorted.count))
         }
+    }
+    func pthPercentile(p: __0iTo1i) -> ℝ {
+        return pthPercentileAndIts1BasedIndex(p: p).0
     }
     
     // First quartile or 25th percentile
@@ -66,6 +81,8 @@ class SampleOrPopulation_impl: SampleOrPopulation {
     var median: ℝ { q2 }
     // Third quartile or 75th percentile
     var q3: ℝ { pthPercentile(p: __0iTo1i(ℝ_0to1: 0.75)) }
+    // All quartiles
+    var quartiles: (ℝ, ℝ, ℝ) { (q1, q2, q3) }
     
     private var _sorted: [ℝ]?
     var sorted: [ℝ] {
@@ -86,8 +103,69 @@ class SampleOrPopulation_impl: SampleOrPopulation {
         }
         return nil
     }
+    var max: ℝ? {
+        if let last = sorted.last {
+            return last
+        }
+        return nil
+    }
+    var min: ℝ? {
+        if let first = sorted.first {
+            return first
+        }
+        return nil
+    }
     
-    var iqr: ℝ! { q3 - q1 }
+    // For a histogram or stem-and-leaf plot, returns the stems and leaves: the array of pairs returned has a stem and all leaves for that stem in each element.
+    // TODO: This assumes the stem is the ones place. In the future, make this setting a parameter maybe, or (better) infer it from `self.range` or something.
+    var stemsAndLeaves: [(ℝ, [ℝ])] {
+        let allStemsAndLeaves: [(ℝ, ℝ)] = sorted.map{$0.integerAndFractionParts}
+//        allStemsAndLeaves.reduce(0, {acc,x in
+//            acc + x.0
+//        })
+        
+        var res = [(ℝ, [ℝ])]()
+        var lastSeen: ℝ! = nil
+        var currentLeaves = [R]()
+        for x in allStemsAndLeaves {
+            if lastSeen != nil {
+                if lastSeen == x.0 {
+                    // Within a "run" of the same stems
+                    currentLeaves.append(x.1)
+                }
+                else {
+                    // End of the "run"
+                    res.append((lastSeen, currentLeaves))
+                    currentLeaves = [R]()
+
+                    lastSeen = x.0
+                    currentLeaves.append(x.1)
+                }
+            }
+            else {
+                lastSeen = x.0
+                currentLeaves.append(x.1)
+            }
+        }
+        if lastSeen != nil {
+            // End of the "run"
+            res.append((lastSeen, currentLeaves))
+        }
+        
+        return res
+    }
+    
+    // IQR (Inter-quartile range)
+    var iqr: ℝ { q3 - q1 }
+    
+    // For a boxplot, returns the "invisible lines" where the first element of the pair is based on Q_1 (the first quartile) and the second element is based on Q_3.
+    var boxplotInvisibleLines: (ℝ, ℝ) { (q1 - 1.5 * iqr, q3 + 1.5 * iqr) }
+    
+    // "Whiskers" for the boxplot
+    var minAndMaxWithinInvisibleLines: (ℝ, ℝ) { (sorted.filter{$0 > boxplotInvisibleLines.0}.first!, sorted.filter{$0 < boxplotInvisibleLines.1}.last!) }
+    
+    // For the boxplot. Values outside the `minAndMaxWithinInvisibleLines`.
+    var extremeOutliers: [ℝ] { sorted.filter{$0 < minAndMaxWithinInvisibleLines.0 || $0 > minAndMaxWithinInvisibleLines.1} }
     
     var modes: [ℝ] {
         return sampleOrPopulation.mostFrequent()?.mostFrequent ?? []
@@ -140,19 +218,33 @@ extension Array where Element: Hashable {
     }
 }
 
+extension Array {
+    // 1-based index accessor
+    func i(_ index1Based: Int) -> Element { return self[index1Based - 1] }
+}
+
 // Fill in with given values
 class SampleOrPopulation_givenValues: SampleOrPopulation {
-    init(nOrN: Int, mean: ℝ, variance: ℝ, stdev: ℝ) {
-        self.nOrN = nOrN
-        self.mean = mean
-        self.variance = variance
-        self.stdev = stdev
+    init(nOrN: Int?, mean: ℝ?, variance: ℝ?) {
+        self.nOrN = nOrN ?? Int.min
+        self.mean = mean ?? ℝ.nan
+        self.variance = variance ?? ℝ.nan
+    }
+    
+    init(nOrN: Int?, mean: ℝ?, stdev: ℝ) {
+        self.nOrN = nOrN ?? Int.min
+        self.mean = mean ?? ℝ.nan
+        self.variance = pow(stdev, 2)
+    }
+    
+    convenience init(stdev: ℝ) {
+        self.init(nOrN: nil, mean: nil, stdev: stdev)
     }
     
     var nOrN: Int
     var mean: ℝ
     var variance: ℝ
-    var stdev: ℝ
+    var stdev: ℝ { ℝ(sqrt(ℝtoDouble(variance))) }
     
     var sampleOrPopulation: [ℝ] { fatalError() }
 }
@@ -175,4 +267,13 @@ func * (left: ℝ, right: SampleOrPopulation) -> SampleOrPopulation {
 
 func + (left: ℝ, right: SampleOrPopulation) -> SampleOrPopulation {
     return SampleOrPopulation_impl(right.sampleOrPopulation.map{$0 + left})
+}
+
+// Note: It would be cool to somehow use this to build lazily evaluated multiplications, etc. as equations or something..
+func * (left: ℝ, right: SampleOrPopulation_givenValues) -> SampleOrPopulation_givenValues {
+    return SampleOrPopulation_givenValues(nOrN: right.nOrN, mean: right.mean * left, variance: right.variance * pow(left, 2))
+}
+
+func + (left: ℝ, right: SampleOrPopulation_givenValues) -> SampleOrPopulation_givenValues {
+    return SampleOrPopulation_givenValues(nOrN: right.nOrN, mean: right.mean + left, variance: right.variance)
 }
