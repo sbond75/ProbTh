@@ -197,10 +197,12 @@ if [ -r "${ARTIFACT_LIST_FILE}" ]; then
 fi
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Bow/Bow.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BowGeneric/BowGeneric.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Bow/Bow.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BowGeneric/BowGeneric.framework"
 fi
