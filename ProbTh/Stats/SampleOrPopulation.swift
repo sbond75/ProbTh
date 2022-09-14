@@ -261,6 +261,8 @@ class Sample: SampleOrPopulation_impl {
     }) }
 }
 
+// MARK: Operations on left-hand-side reals and `SampleOrPopulation`
+
 func * (left: ℝ, right: SampleOrPopulation) -> SampleOrPopulation {
     return SampleOrPopulation_impl(right.sampleOrPopulation.map{$0 * left})
 }
@@ -269,6 +271,12 @@ func + (left: ℝ, right: SampleOrPopulation) -> SampleOrPopulation {
     return SampleOrPopulation_impl(right.sampleOrPopulation.map{$0 + left})
 }
 
+func - (left: ℝ, right: SampleOrPopulation) -> SampleOrPopulation {
+    return SampleOrPopulation_impl(right.sampleOrPopulation.map{$0 - left})
+}
+
+// MARK: Operations on left-hand-side reals and `SampleOrPopulation_givenValues`
+
 // Note: It would be cool to somehow use this to build lazily evaluated multiplications, etc. as equations or something..
 func * (left: ℝ, right: SampleOrPopulation_givenValues) -> SampleOrPopulation_givenValues {
     return SampleOrPopulation_givenValues(nOrN: right.nOrN, mean: right.mean * left, variance: right.variance * pow(left, 2))
@@ -276,4 +284,15 @@ func * (left: ℝ, right: SampleOrPopulation_givenValues) -> SampleOrPopulation_
 
 func + (left: ℝ, right: SampleOrPopulation_givenValues) -> SampleOrPopulation_givenValues {
     return SampleOrPopulation_givenValues(nOrN: right.nOrN, mean: right.mean + left, variance: right.variance)
+}
+
+func - (left: ℝ, right: SampleOrPopulation_givenValues) -> SampleOrPopulation_givenValues {
+    return SampleOrPopulation_givenValues(nOrN: right.nOrN, mean: left - right.mean, variance: right.variance)
+}
+
+// MARK: Operations on `SampleOrPopulation_givenValues`
+
+func + (left: SampleOrPopulation_givenValues, right: SampleOrPopulation_givenValues) -> SampleOrPopulation_givenValues {
+    return SampleOrPopulation_givenValues(nOrN: left.nOrN != Int.min && right.nOrN != Int.min ? (left.nOrN + right.nOrN) : Int.min // (This check prevents `Thread 1: EXC_BAD_INSTRUCTION (code=EXC_I386_INVOP, subcode=0x0)` which happens for some odd reason when adding -9223372036854775808 with -9223372036854775808)
+        , mean: left.mean + right.mean, variance: left.variance + right.variance)
 }

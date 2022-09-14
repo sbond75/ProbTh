@@ -11,6 +11,8 @@
 		3071C74C28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */; };
 		3071C74F28C193B500B07AEE /* CountingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74E28C193B500B07AEE /* CountingMethods.swift */; };
 		3090179A28B67A93002EA19A /* SampleOrPopulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3090179928B67A93002EA19A /* SampleOrPopulation.swift */; };
+		309409CD28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309409CC28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift */; };
+		309409D028CEB99E000B1AC6 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309409CF28CEB99E000B1AC6 /* Matrix.swift */; };
 		30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */; };
 		30D3291A28AC193C00150DE2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3291928AC193C00150DE2 /* main.swift */; };
 		30D3292128AC23C500150DE2 /* Theory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292028AC23C500150DE2 /* Theory.swift */; };
@@ -40,6 +42,8 @@
 		3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Additions.swift"; sourceTree = "<group>"; };
 		3071C74E28C193B500B07AEE /* CountingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingMethods.swift; sourceTree = "<group>"; };
 		3090179928B67A93002EA19A /* SampleOrPopulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleOrPopulation.swift; sourceTree = "<group>"; };
+		309409CC28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointDiscreteRandomVariables.swift; sourceTree = "<group>"; };
+		309409CF28CEB99E000B1AC6 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitativeOrQualitative.swift; sourceTree = "<group>"; };
 		30D3291628AC193C00150DE2 /* ProbTh */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProbTh; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D3291928AC193C00150DE2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */,
+				309409CF28CEB99E000B1AC6 /* Matrix.swift */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 			children = (
 				3090179928B67A93002EA19A /* SampleOrPopulation.swift */,
 				30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */,
+				309409CC28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -251,7 +257,9 @@
 				3071C74928BFE2F400B07AEE /* HW1.swift in Sources */,
 				30D3292328AC274F00150DE2 /* AxiomsOfProbability.swift in Sources */,
 				30D3291A28AC193C00150DE2 /* main.swift in Sources */,
+				309409D028CEB99E000B1AC6 /* Matrix.swift in Sources */,
 				30D3292D28B1983200150DE2 /* PMF.swift in Sources */,
+				309409CD28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift in Sources */,
 				3090179A28B67A93002EA19A /* SampleOrPopulation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

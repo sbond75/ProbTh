@@ -58,6 +58,13 @@ typealias ℝ = R
 func ℝtoDouble(_ ℝ: ℝ) -> Double {
     return NSDecimalNumber(decimal: ℝ).doubleValue
 }
+
+func doubleToℝ(_ double: Double) -> ℝ {
+    return Decimal(double)
+}
+func intToℝ(_ int: Int) -> ℝ {
+    return Decimal(int)
+}
 // //
 
 // General ℝ functions

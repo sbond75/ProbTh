@@ -52,3 +52,7 @@ func example1() {
 //example1()
 
 RunLoop.current.run()
+
+//var X=SampleOrPopulation_givenValues(nOrN: nil, mean: 61, variance: nil); var Y = SampleOrPopulation_givenValues(nOrN: nil, mean: 26, variance: nil); print((X + -9*Y).mean)
+
+//X=SampleOrPopulation_givenValues(nOrN: nil, mean: nil, stdev: 7); Y = SampleOrPopulation_givenValues(nOrN: nil, mean: nil, stdev: 4); print((X + -9*Y).stdev)
