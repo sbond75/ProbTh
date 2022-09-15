@@ -51,7 +51,11 @@ func example1() {
 
 //example1()
 
+initPython()
+
 RunLoop.current.run()
+
+Py_Finalize()
 
 //var X=SampleOrPopulation_givenValues(nOrN: nil, mean: 61, variance: nil); var Y = SampleOrPopulation_givenValues(nOrN: nil, mean: 26, variance: nil); print((X + -9*Y).mean)
 

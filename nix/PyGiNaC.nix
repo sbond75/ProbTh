@@ -3,7 +3,7 @@
   python3Packages,
   darwin, callPackage, ncurses, buildPythonPackage }:
 
-buildPythonPackage rec {
+stdenv.mkDerivation rec {
   name = "PyGiNaC";
   version = "v1.5.10";
 

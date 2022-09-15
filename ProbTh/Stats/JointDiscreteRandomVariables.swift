@@ -105,3 +105,27 @@ class JointPMF {
     var xIndices: [Int]
     var yIndices: [Int]
 }
+
+// Single variable X
+class PMF: JointPMF, SampleOrPopulation {
+    var nOrN: Int { contents.count }
+    
+    var sampleOrPopulation: [ℝ] { contents.grid.map(doubleToℝ) }
+    
+    init(data: [Double], xIndices: [Int]? = nil) {
+        super.init(data: [data], xIndices: xIndices, yIndices: xIndices)
+    }
+    
+    var mean: ℝ {
+        μ_X
+    }
+    
+    var variance: ℝ {
+        let temp = xIndices.reduce(0, {acc, x in acc + intToℝ(x * x) * p_X(X: x)})
+        return temp - μ_X * μ_X
+    }
+    
+    var stdev: ℝ {
+        return doubleToℝ(sqrt(ℝtoDouble(variance)))
+    }
+}

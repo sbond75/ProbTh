@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,12 @@
 		3090179A28B67A93002EA19A /* SampleOrPopulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3090179928B67A93002EA19A /* SampleOrPopulation.swift */; };
 		309409CD28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309409CC28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift */; };
 		309409D028CEB99E000B1AC6 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309409CF28CEB99E000B1AC6 /* Matrix.swift */; };
+		309409D228D2838C000B1AC6 /* HW3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309409D128D2838C000B1AC6 /* HW3.swift */; };
+		309409D428D3B8EB000B1AC6 /* ContinuousRandomVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309409D328D3B8EB000B1AC6 /* ContinuousRandomVariables.swift */; };
+		309409D728D3BAC2000B1AC6 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 309409D628D3BAC2000B1AC6 /* PythonKit */; };
+		3099AA2A28D3BF1400B16B30 /* py.c in Sources */ = {isa = PBXBuildFile; fileRef = 3099AA2628D3BF1300B16B30 /* py.c */; };
+		3099AA2B28D3BF1400B16B30 /* pf_string.c in Sources */ = {isa = PBXBuildFile; fileRef = 3099AA2728D3BF1300B16B30 /* pf_string.c */; };
+		3099AA2D28D3C2CA00B16B30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3099AA2C28D3C2CA00B16B30 /* Constants.swift */; };
 		30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */; };
 		30D3291A28AC193C00150DE2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3291928AC193C00150DE2 /* main.swift */; };
 		30D3292128AC23C500150DE2 /* Theory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292028AC23C500150DE2 /* Theory.swift */; };
@@ -44,6 +50,15 @@
 		3090179928B67A93002EA19A /* SampleOrPopulation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleOrPopulation.swift; sourceTree = "<group>"; };
 		309409CC28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JointDiscreteRandomVariables.swift; sourceTree = "<group>"; };
 		309409CF28CEB99E000B1AC6 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		309409D128D2838C000B1AC6 /* HW3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW3.swift; sourceTree = "<group>"; };
+		309409D328D3B8EB000B1AC6 /* ContinuousRandomVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuousRandomVariables.swift; sourceTree = "<group>"; };
+		309409D528D3BA49000B1AC6 /* PythonKit */ = {isa = PBXFileReference; lastKnownFileType = text; path = PythonKit; sourceTree = SOURCE_ROOT; };
+		309409D828D3BC8B000B1AC6 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		3099AA2628D3BF1300B16B30 /* py.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = py.c; sourceTree = "<group>"; };
+		3099AA2728D3BF1300B16B30 /* pf_string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pf_string.c; sourceTree = "<group>"; };
+		3099AA2828D3BF1400B16B30 /* pf_string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pf_string.h; sourceTree = "<group>"; };
+		3099AA2928D3BF1400B16B30 /* py.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = py.h; sourceTree = "<group>"; };
+		3099AA2C28D3C2CA00B16B30 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = SOURCE_ROOT; };
 		30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitativeOrQualitative.swift; sourceTree = "<group>"; };
 		30D3291628AC193C00150DE2 /* ProbTh */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProbTh; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D3291928AC193C00150DE2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -66,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C9E88CA577D0CB9796B2F20 /* Pods_ProbTh.framework in Frameworks */,
+				309409D728D3BAC2000B1AC6 /* PythonKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				3071C74828BFE2F400B07AEE /* HW1.swift */,
+				309409D128D2838C000B1AC6 /* HW3.swift */,
 			);
 			path = HW;
 			sourceTree = "<group>";
@@ -92,6 +109,11 @@
 		3071C74A28BFE4A300B07AEE /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				309409D528D3BA49000B1AC6 /* PythonKit */,
+				3099AA2728D3BF1300B16B30 /* pf_string.c */,
+				3099AA2828D3BF1400B16B30 /* pf_string.h */,
+				3099AA2628D3BF1300B16B30 /* py.c */,
+				3099AA2928D3BF1400B16B30 /* py.h */,
 				3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */,
 				309409CF28CEB99E000B1AC6 /* Matrix.swift */,
 			);
@@ -112,6 +134,7 @@
 				3090179928B67A93002EA19A /* SampleOrPopulation.swift */,
 				30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */,
 				309409CC28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift */,
+				309409D328D3B8EB000B1AC6 /* ContinuousRandomVariables.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -138,6 +161,7 @@
 		30D3291828AC193C00150DE2 /* ProbTh */ = {
 			isa = PBXGroup;
 			children = (
+				3099AA2C28D3C2CA00B16B30 /* Constants.swift */,
 				3071C74D28C1933900B07AEE /* Combinatorics */,
 				3071C74A28BFE4A300B07AEE /* lib */,
 				3071C74728BFE2EA00B07AEE /* HW */,
@@ -150,6 +174,7 @@
 				30D3292828B190DD00150DE2 /* RandomVar.swift */,
 				30D3292A28B1926A00150DE2 /* CDF.swift */,
 				30D3292C28B1983200150DE2 /* PMF.swift */,
+				309409D828D3BC8B000B1AC6 /* BridgingHeader.h */,
 			);
 			path = ProbTh;
 			sourceTree = "<group>";
@@ -179,6 +204,9 @@
 			dependencies = (
 			);
 			name = ProbTh;
+			packageProductDependencies = (
+				309409D628D3BAC2000B1AC6 /* PythonKit */,
+			);
 			productName = ProbTh;
 			productReference = 30D3291628AC193C00150DE2 /* ProbTh */;
 			productType = "com.apple.product-type.tool";
@@ -195,6 +223,7 @@
 				TargetAttributes = {
 					30D3291528AC193C00150DE2 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
 					};
 				};
 			};
@@ -249,9 +278,11 @@
 				3071C74F28C193B500B07AEE /* CountingMethods.swift in Sources */,
 				30D3292B28B1926A00150DE2 /* CDF.swift in Sources */,
 				3071C74C28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift in Sources */,
+				309409D428D3B8EB000B1AC6 /* ContinuousRandomVariables.swift in Sources */,
 				30D3292528AC984400150DE2 /* Etc+Hashable.swift in Sources */,
 				30D3292728B18AEB00150DE2 /* ConditionalProb.swift in Sources */,
 				30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */,
+				309409D228D2838C000B1AC6 /* HW3.swift in Sources */,
 				30D3292928B190DD00150DE2 /* RandomVar.swift in Sources */,
 				30D3292128AC23C500150DE2 /* Theory.swift in Sources */,
 				3071C74928BFE2F400B07AEE /* HW1.swift in Sources */,
@@ -259,7 +290,10 @@
 				30D3291A28AC193C00150DE2 /* main.swift in Sources */,
 				309409D028CEB99E000B1AC6 /* Matrix.swift in Sources */,
 				30D3292D28B1983200150DE2 /* PMF.swift in Sources */,
+				3099AA2D28D3C2CA00B16B30 /* Constants.swift in Sources */,
+				3099AA2B28D3BF1400B16B30 /* pf_string.c in Sources */,
 				309409CD28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift in Sources */,
+				3099AA2A28D3BF1400B16B30 /* py.c in Sources */,
 				3090179A28B67A93002EA19A /* SampleOrPopulation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +303,7 @@
 /* Begin XCBuildConfiguration section */
 		30D3291B28AC193C00150DE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30D3292E28B528B300150DE2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -323,12 +358,14 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ProbTh/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		30D3291C28AC193C00150DE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30D3292E28B528B300150DE2 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -376,6 +413,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ProbTh/BridgingHeader.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
@@ -384,10 +422,17 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 85BB65CF37C88EC3F09137D7 /* Pods-ProbTh.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86HDH9K924;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -396,9 +441,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB5BF1A19FC7EAB2BEC3F70B /* Pods-ProbTh.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 86HDH9K924;
 				ENABLE_HARDENED_RUNTIME = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -426,6 +477,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		309409D628D3BAC2000B1AC6 /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PythonKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 30D3290E28AC193C00150DE2 /* Project object */;
 }

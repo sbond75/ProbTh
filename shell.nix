@@ -56,6 +56,8 @@ with pkgs;
 let
   boostPython = python3Packages.boost;
   #boostPython = boost.override { enablePython = true; inherit python3; };
+
+  pyginac = (callPackage ./nix/PyGiNaC.nix {buildPythonPackage=python3Packages.buildPythonPackage;});
 in
 mkShell {
   # buildInputs = [
@@ -77,7 +79,7 @@ mkShell {
 
 
 
-    (callPackage ./nix/PyGiNaC.nix {buildPythonPackage=python3Packages.buildPythonPackage;})
+    (python3.withPackages(ps: with ps; [pyginac]))
     pkg-config
     
     # (callPackage ./nix/ginac.nix {})
@@ -87,4 +89,8 @@ mkShell {
     # boostPython
     # ncurses
   ];
+  
+  shellHook = ''
+    export PYTHONPATH="$PYTHONPATH:${pyginac}/lib/python3.9/site-packages"
+  '';
 }
