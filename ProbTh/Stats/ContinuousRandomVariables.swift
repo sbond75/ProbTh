@@ -12,8 +12,7 @@ import PythonKit
 func pyeval(_ code: String) -> PythonObject {
     //return Python.builtins["eval"].dynamicallyCall(withArguments: [code])
     //return Python.main["eval"].dynamicallyCall(withArguments: [code])
-    //return Python.import("__main__")["eval"].dynamicallyCall(withArguments: [code])
-    Python.import("main")["eval"].dynamicallyCall(withArguments: [code])
+    return Python.import("__main__")[dynamicMember: "__builtins__"][dynamicMember: "eval"].dynamicallyCall(withArguments: [code])
 }
 
 // Set PYTHONPATH
@@ -22,12 +21,12 @@ func initPython() {
     let sys = Python.import("sys")
     
     // Add ginac, etc. to the include path
-    var success = S_RunString("import sys; sys.path.extend(filter(lambda x: len(x)>0, '\(PYTHONPATH)'.split(':'))); sys.path.append('/Volumes/MyTestVolume/Projects/LearningCoq/MyProbabilityTheoryProver/ProbTh/ProbTh/')")
+    var success = S_RunString("import sys; sys.path.extend(filter(lambda x: len(x)>0, '\(PYTHONPATH)'.split(':')))")
     if !success { fatalError() }
     
-    // Define helpers
-    //success = S_RunString_givenModule("import __main__; __main__.eval = eval", Python.main.borrowedPyObject.assumingMemoryBound(to: PyObject.self))
-    //if !success { fatalError() }
+//    // Define helpers
+//    success = S_RunString("import __main__; __main__.eval = eval")
+//    if !success { fatalError() }
 
 //    let ginac = Python.import("ginac")
 //    let integral = ginac["integral"]

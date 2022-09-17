@@ -51,7 +51,7 @@ func example1() {
 
 //example1()
 
-initPython()
+//initPython()
 
 RunLoop.current.run()
 

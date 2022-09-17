@@ -17,9 +17,6 @@ void S_ShowLastError(void);
 bool S_RunString(const char *str);
 
 // Returns true on success
-bool S_RunString_givenModule(const char *str, PyObject* main_module);
-
-// Returns true on success
 bool S_RunFile(const char *path, int argc, char **argv);
 
 #ifdef __cplusplus

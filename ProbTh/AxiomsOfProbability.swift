@@ -65,6 +65,9 @@ func doubleToℝ(_ double: Double) -> ℝ {
 func intToℝ(_ int: Int) -> ℝ {
     return Decimal(int)
 }
+func stringToℝ(_ string: String) -> ℝ {
+    return Decimal(string: string)!
+}
 // //
 
 // General ℝ functions

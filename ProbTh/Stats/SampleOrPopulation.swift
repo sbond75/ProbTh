@@ -203,6 +203,12 @@ class SampleOrPopulation_impl: SampleOrPopulation {
 //        }
 //        // //
     }
+    
+    func bias(given trueValue: ℝ) -> ℝ {
+        return mean - trueValue
+    }
+    
+    var uncertainty: ℝ { stdev }
 }
 
 // https://stackoverflow.com/questions/48255497/calculation-mode-in-an-array-more-than-one-mode

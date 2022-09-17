@@ -10,16 +10,20 @@ import Foundation
 
 // Joint probability mass function (PMF)
 class JointPMF {
+    // `data` is organized so that each array within the array is a row of values with changing X values. If you are providing xIndices and yIndices that are "flipped" then be sure to set the `transpose` argument to true. (Note: `transpose` does *not* transpose xIndices and yIndices, unlike the `.transposed` computed property in this class)
     // If nil, `xIndices` and `yIndices` are assumed to be 0 to `data`'s width or height, respectively.
-    init(data: [[Double]], xIndices: [Int]? = nil, yIndices: [Int]? = nil) {
+    init(data: [[Double]], xIndices: [Int]? = nil, yIndices: [Int]? = nil, transpose: Bool = false) {
         contents = Matrix(data)
+        if transpose { contents = contents.transpose() }
         self.xIndices = xIndices ?? Array(0..<data.count)
         self.yIndices = yIndices ?? Array(0..<data[0].count)
     }
     
+    // `data` is organized so that each array within the array is a row of values with changing X values. If you are providing xIndices and yIndices that are "flipped" then be sure to set the `transpose` argument to true. (Note: `transpose` does *not* transpose xIndices and yIndices, unlike the `.transposed` computed property in this class)
     // If nil, `xIndices` and `yIndices` are assumed to be 0 to `data`'s width or height, respectively.
-    init(data: [[ℝ]], xIndices: [Int]? = nil, yIndices: [Int]? = nil) {
+    init(data: [[ℝ]], xIndices: [Int]? = nil, yIndices: [Int]? = nil, transpose: Bool = false) {
         contents = Matrix(data.map{$0.map{ℝtoDouble($0)}})
+        if transpose { contents = contents.transpose() }
         self.xIndices = xIndices ?? Array(0..<data.count)
         self.yIndices = yIndices ?? Array(0..<data[0].count)
     }
@@ -41,26 +45,36 @@ class JointPMF {
         return doubleToℝ(contents.sumRows()[yIndices.firstIndex(of: Y)!])
     }
     
-    // TODO: untested
     func p(_ x: Int, _ y: Int) -> ℝ {
         return doubleToℝ(contents[yIndices.firstIndex(of: y)!, xIndices.firstIndex(of: x)!])
     }
     
-    // TODO: untested
     func p_Y_given_X_of_y_given_x(x: Int, y: Int) -> ℝ {
         return p(x, y) / p_X(X: x)
     }
     
-    // TODO: untested
     // Same as E_Y_given_X
     func μ_Y_given_X(X: Int) -> ℝ {
         return yIndices.map{y in intToℝ(y) * p_Y_given_X_of_y_given_x(x: X, y: y)}.reduce(0, +)
     }
     
-    // TODO: untested
     // Returns the conditional expected value of Y given X = the given X.
     func E_Y_given_X(X: Int) -> ℝ {
         return μ_Y_given_X(X: X)
+    }
+    
+    func p_X_given_Y_of_x_given_y(x: Int, y: Int) -> ℝ {
+        return transposed.p_Y_given_X_of_y_given_x(x: y, y: x)
+    }
+    
+    // Same as E_X_given_Y
+    func μ_X_given_Y(Y: Int) -> ℝ {
+        return transposed.μ_Y_given_X(X: Y)
+    }
+    
+    // Returns the conditional expected value of X given Y = the given Y.
+    func E_X_given_Y(Y: Int) -> ℝ {
+        return μ_X_given_Y(Y: Y)
     }
     
     // "Mean for X"
@@ -82,9 +96,32 @@ class JointPMF {
         return acc
     }
     
-    // Covariance
+    // Variance for X
+    var variance_X: ℝ {
+        let temp = xIndices.reduce(0, {acc, x in acc + intToℝ(x * x) * p_X(X: x)})
+        return temp - μ_X * μ_X
+    }
+    
+    // Variance for Y
+    var variance_Y: ℝ {
+        let temp = yIndices.reduce(0, {acc, y in acc + intToℝ(y * y) * p_Y(Y: y)})
+        return temp - μ_Y * μ_Y
+    }
+    
+    // Stdev for X
+    var σ_X: ℝ { doubleToℝ(sqrt(ℝtoDouble(variance_X))) }
+    
+    // Stdev for Y
+    var σ_Y: ℝ { doubleToℝ(sqrt(ℝtoDouble(variance_Y))) }
+    
+    // Covariance: Cov(X,Y)
     var cov: ℝ {
         μ_XY - μ_X * μ_Y
+    }
+    
+    // Population correlation coefficient: ρ_{X,Y}
+    var ρ_XY: ℝ {
+        cov / (σ_X * σ_Y)
     }
     
     // "X and Y are independent if p(x,y) = p_X(x) * p_Y(y) for *all* x,y."
@@ -101,6 +138,9 @@ class JointPMF {
         return true
     }
     
+    // Returns a copy of `self` but X becomes Y (i.e. the rows become columns), and vice versa. Likewise, the X and Y indices are swapped (i.e., X becomes Y and Y becomes X)
+    var transposed: JointPMF { JointPMF(data: contents.transpose().array, xIndices: yIndices, yIndices: xIndices) }
+    
     var contents: Matrix // https://github.com/hollance/Matrix
     var xIndices: [Int]
     var yIndices: [Int]
@@ -116,16 +156,9 @@ class PMF: JointPMF, SampleOrPopulation {
         super.init(data: [data], xIndices: xIndices, yIndices: xIndices)
     }
     
-    var mean: ℝ {
-        μ_X
-    }
+    var mean: ℝ { μ_X }
     
-    var variance: ℝ {
-        let temp = xIndices.reduce(0, {acc, x in acc + intToℝ(x * x) * p_X(X: x)})
-        return temp - μ_X * μ_X
-    }
+    var variance: ℝ { variance_X }
     
-    var stdev: ℝ {
-        return doubleToℝ(sqrt(ℝtoDouble(variance)))
-    }
+    var stdev: ℝ { σ_X }
 }
