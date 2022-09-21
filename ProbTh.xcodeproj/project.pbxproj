@@ -142,6 +142,13 @@
 			path = Stats;
 			sourceTree = "<group>";
 		};
+		3099AA4328D66C9B00B16B30 /* Probability */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Probability;
+			sourceTree = "<group>";
+		};
 		30D3290D28AC193C00150DE2 = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +171,7 @@
 		30D3291828AC193C00150DE2 /* ProbTh */ = {
 			isa = PBXGroup;
 			children = (
+				3099AA4328D66C9B00B16B30 /* Probability */,
 				3099AA2C28D3C2CA00B16B30 /* Constants.swift */,
 				3071C74D28C1933900B07AEE /* Combinatorics */,
 				3071C74A28BFE4A300B07AEE /* lib */,

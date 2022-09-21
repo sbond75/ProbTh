@@ -28,7 +28,20 @@ import Bow
 // variables using upper case letters X(ω) or more simply X (where the dependence on the random
 // outcome ω is implied). We will denote the value that a random variable may take on using lower
 // case letters x."
-typealias RandomVar = Function1<ℱ, ℝ>
+enum RandomVar {
+    case Function(Function1<ℱ, ℝ>)
+    case Bernoulli(/*p:*/ ℝ) // `p` is the success rate. (probability of a "success" or a "1" (whereas the probability of a "failure" or a "0" is therefore `1 - p`).)  // Alternate definition might be just a more general probability of a variable.. like `P(X=0) = 1 - p, P(X=1) = p` would be Bernoulli.
+    
+    func invoke(eventSpace: ℱ) -> ℝ {
+        switch self {
+        case let .Function(f):
+            return f.invoke(eventSpace)
+        case let .Bernoulli(p):
+            // TODO: precondition(eventSpace can only have values 0 or 1 (1 for "success", 0 for "failure" -- in Bernoulli))
+            return p
+        }
+    }
+}
 
 extension P {
     // Returns the probability that a random variable X equals k.

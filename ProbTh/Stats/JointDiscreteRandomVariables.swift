@@ -85,6 +85,7 @@ class JointPMF {
     var μ_Y: ℝ {
         yIndices.map{y in intToℝ(y) * p_Y(Y: y)}.reduce(0, +)
     }
+    // (μ_{XY} = μ_X*μ_Y if X,Y are independent. This is because if they are independent, then X,Y are uncorrelated which means Cov(X,Y) is 0. Then, Cov(X,Y) is by definition μ_XY - μ_X * μ_Y so we know that μ_XY - μ_X * μ_Y = 0. Therefore the only way to get 0 here is if μ_XY = μ_X*μ_Y.
     var μ_XY: ℝ {
         // (Don't know how to do a nested for loop functionally..)
         var acc: ℝ = 0
@@ -137,6 +138,15 @@ class JointPMF {
         }
         return true
     }
+    
+    // Whether X and Y are correlated. (Note: a theorem is that if X and Y are independent then X and Y are uncorrelated (not correlated). Also note that the converse is not necessarily true.)
+    var correlated: Bool { cov != 0 }
+    // Whether X and Y are uncorrelated (cov == 0).
+    var uncorrelated: Bool { !correlated }
+    // Whether X and Y are positively correlated (implies correlated).
+    var positivelyCorrelated: Bool { cov > 0 }
+    // Whether X and Y are negatively correlated (implies correlated).
+    var negativelyCorrelated: Bool { cov < 0 }
     
     // Returns a copy of `self` but X becomes Y (i.e. the rows become columns), and vice versa. Likewise, the X and Y indices are swapped (i.e., X becomes Y and Y becomes X)
     var transposed: JointPMF { JointPMF(data: contents.transpose().array, xIndices: yIndices, yIndices: xIndices) }
