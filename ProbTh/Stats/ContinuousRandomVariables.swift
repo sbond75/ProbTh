@@ -41,9 +41,12 @@ func initPython() {
 //    let t = realsymbol.dynamicallyCall(withArguments: ["t"])
 //    let integration = integral.dynamicallyCall(withArguments: [x, 0, t, Python.builtins["__globals__"]])
     
-    success = S_RunString("from ginac import *")
+    //success = S_RunString("from ginac import *")
+    // https://docs.sympy.org/latest/modules/integrals/integrals.html
+    success = S_RunString("from sympy import *; init_printing(use_unicode=False, wrap_line=False)")
     if !success { fatalError() }
     
     // http://moebinv.sourceforge.net/pyGiNaC.html near "integral(x, 0, t, x*x+sin(x))"
-    let integration = pyeval("x = realsymbol('x'); t = realsymbol('t'); f = integral(x, 0, t, x*x+sin(x)); print(f)")
+    //let integration = pyeval("x = realsymbol('x'); t = realsymbol('t'); f = integral(x, 0, t, x*x+sin(x)); print(f)")
+    let integration = pyeval("x = Symbol('x'); print(pretty(integrate(x**2 + x + 1, x)))")
 }

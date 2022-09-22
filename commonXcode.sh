@@ -1,4 +1,10 @@
+#!/usr/bin/env bash
+
 # Based on https://github.com/VADL-2022/SIFT/blob/nasa/commonXcode.sh
+
+if [ -z "$SRCROOT" ]; then
+    SRCROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/$(basename "${BASH_SOURCE[0]}")"
+fi
 
 # Type a script or drag a script file from your workspace to insert its path.
 if [ -z "$IN_NIX_SHELL" ]; then

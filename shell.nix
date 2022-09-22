@@ -79,7 +79,10 @@ mkShell {
 
 
 
-    (python3.withPackages(ps: with ps; [pyginac]))
+    (python3.withPackages(ps: with ps; [
+      pyginac
+      sympy
+    ]))
     pkg-config
     
     # (callPackage ./nix/ginac.nix {})
@@ -91,6 +94,6 @@ mkShell {
   ];
   
   shellHook = ''
-    export PYTHONPATH="$PYTHONPATH:${pyginac}/lib/python3.9/site-packages"
+    export PYTHONPATH="$PYTHONPATH:${pyginac}/lib/python3.9/site-packages:${python3Packages.sympy}/lib/python3.9/site-packages:${python3Packages.mpmath}/lib/python3.9/site-packages"
   '';
 }
