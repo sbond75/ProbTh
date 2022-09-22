@@ -9,10 +9,14 @@
 import Foundation
 import PythonKit
 
-func pyeval(_ code: String) -> PythonObject {
+func pyeval(_ code: String) -> OwnedPyObjectPointer? {
     //return Python.builtins["eval"].dynamicallyCall(withArguments: [code])
     //return Python.main["eval"].dynamicallyCall(withArguments: [code])
-    return Python.import("__main__")[dynamicMember: "__builtins__"][dynamicMember: "eval"].dynamicallyCall(withArguments: [code])
+    //return Python.import("__main__")[dynamicMember: "__builtins__"][dynamicMember: "eval"].dynamicallyCall(withArguments: [code])
+    //let ownedObj = code.pythonObject.borrowedPyObject // NOTE: `ownedPyObject` increfs, borrowedPyObject doesn't [see `final class PyReference {` in PythonKit/PythonKit/Python.swift]. TODO: what about decref? when does it do it? we should probably decref after the call to S_RunStringAndGetResult, not before..
+    //PyObject_Repr(ownedObj.bindMemory(to: PyObject.self, capacity: 1)) // NOTE: should use return value..
+    //return OwnedPyObjectPointer(S_RunStringAndGetResult(UnsafePointer(ownedObj.bindMemory(to: Int8.self, capacity: 1))))
+    return OwnedPyObjectPointer(S_RunStringAndGetResult(code.cString(using: .utf8)))
 }
 
 // Set PYTHONPATH
@@ -41,5 +45,5 @@ func initPython() {
     if !success { fatalError() }
     
     // http://moebinv.sourceforge.net/pyGiNaC.html near "integral(x, 0, t, x*x+sin(x))"
-    let integration = pyeval("x = realsymbol('x'); t = realsymbol('t'); integral(x, 0, t, x*x+sin(x))")
+    let integration = pyeval("x = realsymbol('x'); t = realsymbol('t'); f = integral(x, 0, t, x*x+sin(x)); print(f)")
 }

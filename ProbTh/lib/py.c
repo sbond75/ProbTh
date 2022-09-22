@@ -442,6 +442,25 @@ bool S_RunString(const char *str) {
     return true;
 }
 
+// Returns a Python object on success, otherwise NULL. When finished with the return value, call `Py_XDECREF(result);` where `result` is the return value of this function.
+PyObject* S_RunStringAndGetResult(const char *str) {
+    printf("Running Python: %s\n", str);
+    PyObject *main_module = PyImport_AddModule("__main__"); /* borrowed */
+    if(!main_module)
+      return false;
+    
+    PyObject *global_dict = PyModule_GetDict(main_module); /* borrowed */
+    
+    PyObject *result = PyRun_StringFlags(str, Py_file_input /* Py_single_input for a single statement, or Py_file_input for more than a statement */, global_dict, global_dict, NULL);
+
+    if(PyErr_Occurred()) {
+        S_ShowLastError();
+	return result;
+    }
+
+    return result;
+}
+
 // Returns true on success
 bool S_RunFile(const char *path, int argc, char **argv)
 {

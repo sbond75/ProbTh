@@ -22,9 +22,9 @@ IFLAGS="$(pkg-config --cflags-only-I ginac cln python3)"
 
 # Use a heredoc:
 cat <<InputComesFromHERE > "$XCCONFIG"
-CXXFLAGS = \$(CXXFLAGS)
+CXXFLAGS = \$(inherited)
 HEADER_SEARCH_PATHS=$(echo -n "$IFLAGS" | awk 'BEGIN { ORS=" "; RS = " " } ; { sub(/^-I/, ""); print $0 }')
-OTHER_LDFLAGS = \$(NIX_LDFLAGS) `pkg-config --libs ginac cln python3-embed`
+OTHER_LDFLAGS = \$(inherited) \$(NIX_LDFLAGS) `pkg-config --libs ginac cln python3-embed`
 CLANG_CXX_LIBRARY=libc++
 CLANG_CXX_LANGUAGE_STANDARD=c++11
 InputComesFromHERE
