@@ -54,6 +54,9 @@ class CounterBCS: Counter {
 
 // https://github.com/attaswift/BigInt
 func factorial(_ n: Int) -> BigInt {
+    if n == 0 {
+        return BigInt(1)
+    }
     return (1 ... n).map { BigInt($0) }.reduce(BigInt(1), *)
 }
 
