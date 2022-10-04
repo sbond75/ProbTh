@@ -1,3 +1,6 @@
 [submodule "PythonKit"]
 	path = PythonKit
 	url = https://github.com/sbond75/PythonKit.git
+[submodule "swiftplot"]
+	path = swiftplot
+	url = https://github.com/KarthikRIyer/swiftplot.git

@@ -30,6 +30,9 @@
 		30D3292928B190DD00150DE2 /* RandomVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292828B190DD00150DE2 /* RandomVar.swift */; };
 		30D3292B28B1926A00150DE2 /* CDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292A28B1926A00150DE2 /* CDF.swift */; };
 		30D3292D28B1983200150DE2 /* PMF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292C28B1983200150DE2 /* PMF.swift */; };
+		30DD371528EA7C4500C96A12 /* QuartzRenderer in Frameworks */ = {isa = PBXBuildFile; productRef = 30DD371428EA7C4500C96A12 /* QuartzRenderer */; };
+		30DD371728EA7C4500C96A12 /* SwiftPlot in Frameworks */ = {isa = PBXBuildFile; productRef = 30DD371628EA7C4500C96A12 /* SwiftPlot */; };
+		30DD371928EA7CE700C96A12 /* QQPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DD371828EA7CE700C96A12 /* QQPlot.swift */; };
 		4C9E88CA577D0CB9796B2F20 /* Pods_ProbTh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF911D77F5375479C17AAA7 /* Pods_ProbTh.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +77,8 @@
 		30D3292A28B1926A00150DE2 /* CDF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDF.swift; sourceTree = "<group>"; };
 		30D3292C28B1983200150DE2 /* PMF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMF.swift; sourceTree = "<group>"; };
 		30D3292E28B528B300150DE2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		30DD371328EA7C2200C96A12 /* swiftplot */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftplot; sourceTree = SOURCE_ROOT; };
+		30DD371828EA7CE700C96A12 /* QQPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQPlot.swift; sourceTree = "<group>"; };
 		85BB65CF37C88EC3F09137D7 /* Pods-ProbTh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProbTh.debug.xcconfig"; path = "Target Support Files/Pods-ProbTh/Pods-ProbTh.debug.xcconfig"; sourceTree = "<group>"; };
 		DB5BF1A19FC7EAB2BEC3F70B /* Pods-ProbTh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProbTh.release.xcconfig"; path = "Target Support Files/Pods-ProbTh/Pods-ProbTh.release.xcconfig"; sourceTree = "<group>"; };
 		FAF911D77F5375479C17AAA7 /* Pods_ProbTh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProbTh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30DD371528EA7C4500C96A12 /* QuartzRenderer in Frameworks */,
+				30DD371728EA7C4500C96A12 /* SwiftPlot in Frameworks */,
 				4C9E88CA577D0CB9796B2F20 /* Pods_ProbTh.framework in Frameworks */,
 				309409D728D3BAC2000B1AC6 /* PythonKit in Frameworks */,
 			);
@@ -113,6 +120,7 @@
 		3071C74A28BFE4A300B07AEE /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				30DD371328EA7C2200C96A12 /* swiftplot */,
 				309409D528D3BA49000B1AC6 /* PythonKit */,
 				3099AA2728D3BF1300B16B30 /* pf_string.c */,
 				3099AA2828D3BF1400B16B30 /* pf_string.h */,
@@ -148,6 +156,7 @@
 		3099AA4328D66C9B00B16B30 /* Probability */ = {
 			isa = PBXGroup;
 			children = (
+				30DD371828EA7CE700C96A12 /* QQPlot.swift */,
 			);
 			path = Probability;
 			sourceTree = "<group>";
@@ -220,6 +229,8 @@
 			name = ProbTh;
 			packageProductDependencies = (
 				309409D628D3BAC2000B1AC6 /* PythonKit */,
+				30DD371428EA7C4500C96A12 /* QuartzRenderer */,
+				30DD371628EA7C4500C96A12 /* SwiftPlot */,
 			);
 			productName = ProbTh;
 			productReference = 30D3291628AC193C00150DE2 /* ProbTh */;
@@ -292,6 +303,7 @@
 				3071C74F28C193B500B07AEE /* CountingMethods.swift in Sources */,
 				30D3292B28B1926A00150DE2 /* CDF.swift in Sources */,
 				3071C74C28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift in Sources */,
+				30DD371928EA7CE700C96A12 /* QQPlot.swift in Sources */,
 				309409D428D3B8EB000B1AC6 /* ContinuousRandomVariables.swift in Sources */,
 				30D3292528AC984400150DE2 /* Etc+Hashable.swift in Sources */,
 				30D3292728B18AEB00150DE2 /* ConditionalProb.swift in Sources */,
@@ -498,6 +510,14 @@
 		309409D628D3BAC2000B1AC6 /* PythonKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PythonKit;
+		};
+		30DD371428EA7C4500C96A12 /* QuartzRenderer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = QuartzRenderer;
+		};
+		30DD371628EA7C4500C96A12 /* SwiftPlot */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SwiftPlot;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

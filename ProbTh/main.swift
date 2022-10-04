@@ -51,6 +51,10 @@ func example1() {
 
 //example1()
 
+//QQPlot().plot(sample: Sample([2.5, 3.7, 4.9, 6.4, 7.5]))
+
+QQPlot().plot(sample: Sample([1, 2, 3, 6, 9, 12, 15, 18, 19, 20]))
+
 initPython()
 
 RunLoop.current.run()
