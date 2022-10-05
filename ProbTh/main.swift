@@ -53,13 +53,13 @@ func example1() {
 
 //QQPlot().plot(sample: Sample([2.5, 3.7, 4.9, 6.4, 7.5]))
 
-QQPlot().plot(sample: Sample([1, 2, 3, 6, 9, 12, 15, 18, 19, 20]))
+//QQPlot().plot(sample: Sample([1, 2, 3, 6, 9, 12, 15, 18, 19, 20]))
 
-initPython()
+//initPython()
 
 RunLoop.current.run()
 
-Py_Finalize()
+//Py_Finalize()
 
 //var X=SampleOrPopulation_givenValues(nOrN: nil, mean: 61, variance: nil); var Y = SampleOrPopulation_givenValues(nOrN: nil, mean: 26, variance: nil); print((X + -9*Y).mean)
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3028121C28ED239100D63CE0 /* Exp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028121B28ED239100D63CE0 /* Exp.swift */; };
 		3071C74928BFE2F400B07AEE /* HW1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74828BFE2F400B07AEE /* HW1.swift */; };
 		3071C74C28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */; };
 		3071C74F28C193B500B07AEE /* CountingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74E28C193B500B07AEE /* CountingMethods.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3028121B28ED239100D63CE0 /* Exp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exp.swift; sourceTree = "<group>"; };
 		3071C74828BFE2F400B07AEE /* HW1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW1.swift; sourceTree = "<group>"; };
 		3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Additions.swift"; sourceTree = "<group>"; };
 		3071C74E28C193B500B07AEE /* CountingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingMethods.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				309409D328D3B8EB000B1AC6 /* ContinuousRandomVariables.swift */,
 				3099AA4128D4180100B16B30 /* Measurement.swift */,
 				30777A8728E1475E00DFF06E /* Poisson.swift */,
+				3028121B28ED239100D63CE0 /* Exp.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				309409D028CEB99E000B1AC6 /* Matrix.swift in Sources */,
 				30D3292D28B1983200150DE2 /* PMF.swift in Sources */,
 				3099AA2D28D3C2CA00B16B30 /* Constants.swift in Sources */,
+				3028121C28ED239100D63CE0 /* Exp.swift in Sources */,
 				3099AA2B28D3BF1400B16B30 /* pf_string.c in Sources */,
 				309409CD28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift in Sources */,
 				3099AA2A28D3BF1400B16B30 /* py.c in Sources */,
