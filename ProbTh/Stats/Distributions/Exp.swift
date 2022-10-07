@@ -10,6 +10,9 @@ import Foundation
 
 // The exponential distribution
 class Exp: Poisson {
+    // MARK: Distribution
+    // NOTE: this uses Poisson's functions since X, a Poisson random variable, is kind of "decorated" by this class which has a new random variable: T.
+    
     // MARK: SampleOrPopulation
     
     // Mean waiting time between occurrences of the Poisson process described by this exponential distribution.

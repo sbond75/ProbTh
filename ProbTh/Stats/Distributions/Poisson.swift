@@ -10,10 +10,25 @@ import Foundation
 import Accelerate
 import BigInt
 
-class Poisson: SampleOrPopulation {
+class Poisson: SampleOrPopulation, Distribution {
+    // MARK: Distribution
+    // NOTE: these are more limited versions of "in the next" `t` time units functions available in this Poisson class.
+    
+    func p(XIsExactly x: Int) -> __0iTo1i {
+        p(x: x)
+    }
+    
+    func p(XIsGreaterThan x: Int) -> __0iTo1i {
+        __0iTo1i(ℝ_0to1: 1 - p(XIsLessThan: x).ℝ_0to1) // TODO: untested
+    }
+    
+    func p(XIsLessThan x: Int) -> __0iTo1i {
+        p(XIsLessThan: x)
+    }
+    
     // MARK: SampleOrPopulation
     
-    var nOrN: Int { .max }
+    var nOrN: Int { fatalError() }
     
     var mean: ℝ { rate }
     
@@ -21,7 +36,7 @@ class Poisson: SampleOrPopulation {
     
     var stdev: ℝ { doubleToℝ(sqrt(ℝtoDouble(variance))) }
     
-    var sampleOrPopulation: [ℝ] { [] }
+    var sampleOrPopulation: [ℝ] { fatalError() }
     
     // MARK: Poisson
     

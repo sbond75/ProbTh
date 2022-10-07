@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		3028121C28ED239100D63CE0 /* Exp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028121B28ED239100D63CE0 /* Exp.swift */; };
+		3028121E28EDD97900D63CE0 /* Geom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028121D28EDD97900D63CE0 /* Geom.swift */; };
+		3028122228EDDAB000D63CE0 /* RealNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028122128EDDAB000D63CE0 /* RealNumbers.swift */; };
+		303D475428EDDE9500E91D3C /* NB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475328EDDE9500E91D3C /* NB.swift */; };
+		303D475728EDE40E00E91D3C /* H.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475628EDE40E00E91D3C /* H.swift */; };
+		303D475928EDE53000E91D3C /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475828EDE53000E91D3C /* Distribution.swift */; };
+		303D475B28EE7FBE00E91D3C /* Bin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475A28EE7FBE00E91D3C /* Bin.swift */; };
+		303D475D28EE80F000E91D3C /* Multinomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475C28EE80F000E91D3C /* Multinomial.swift */; };
+		303D475F28EF205800E91D3C /* Normal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475E28EF205800E91D3C /* Normal.swift */; };
 		3071C74928BFE2F400B07AEE /* HW1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74828BFE2F400B07AEE /* HW1.swift */; };
 		3071C74C28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */; };
 		3071C74F28C193B500B07AEE /* CountingMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3071C74E28C193B500B07AEE /* CountingMethods.swift */; };
@@ -51,6 +59,14 @@
 
 /* Begin PBXFileReference section */
 		3028121B28ED239100D63CE0 /* Exp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exp.swift; sourceTree = "<group>"; };
+		3028121D28EDD97900D63CE0 /* Geom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geom.swift; sourceTree = "<group>"; };
+		3028122128EDDAB000D63CE0 /* RealNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealNumbers.swift; sourceTree = "<group>"; };
+		303D475328EDDE9500E91D3C /* NB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NB.swift; sourceTree = "<group>"; };
+		303D475628EDE40E00E91D3C /* H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H.swift; sourceTree = "<group>"; };
+		303D475828EDE53000E91D3C /* Distribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distribution.swift; sourceTree = "<group>"; };
+		303D475A28EE7FBE00E91D3C /* Bin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bin.swift; sourceTree = "<group>"; };
+		303D475C28EE80F000E91D3C /* Multinomial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Multinomial.swift; sourceTree = "<group>"; };
+		303D475E28EF205800E91D3C /* Normal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Normal.swift; sourceTree = "<group>"; };
 		3071C74828BFE2F400B07AEE /* HW1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW1.swift; sourceTree = "<group>"; };
 		3071C74B28BFE4B200B07AEE /* NSDecimalNumber+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDecimalNumber+Additions.swift"; sourceTree = "<group>"; };
 		3071C74E28C193B500B07AEE /* CountingMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingMethods.swift; sourceTree = "<group>"; };
@@ -110,6 +126,30 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		303D475528EDE3FE00E91D3C /* Distributions */ = {
+			isa = PBXGroup;
+			children = (
+				303D475828EDE53000E91D3C /* Distribution.swift */,
+				30777A8728E1475E00DFF06E /* Poisson.swift */,
+				3028121B28ED239100D63CE0 /* Exp.swift */,
+				3028121D28EDD97900D63CE0 /* Geom.swift */,
+				303D475328EDDE9500E91D3C /* NB.swift */,
+				303D475628EDE40E00E91D3C /* H.swift */,
+				303D475A28EE7FBE00E91D3C /* Bin.swift */,
+				303D475C28EE80F000E91D3C /* Multinomial.swift */,
+				303D476028EF205D00E91D3C /* Continuous */,
+			);
+			path = Distributions;
+			sourceTree = "<group>";
+		};
+		303D476028EF205D00E91D3C /* Continuous */ = {
+			isa = PBXGroup;
+			children = (
+				303D475E28EF205800E91D3C /* Normal.swift */,
+			);
+			path = Continuous;
+			sourceTree = "<group>";
+		};
 		3071C74728BFE2EA00B07AEE /* HW */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,13 +185,12 @@
 		3090179828B67A4F002EA19A /* Stats */ = {
 			isa = PBXGroup;
 			children = (
+				303D475528EDE3FE00E91D3C /* Distributions */,
 				3090179928B67A93002EA19A /* SampleOrPopulation.swift */,
 				30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */,
 				309409CC28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift */,
 				309409D328D3B8EB000B1AC6 /* ContinuousRandomVariables.swift */,
 				3099AA4128D4180100B16B30 /* Measurement.swift */,
-				30777A8728E1475E00DFF06E /* Poisson.swift */,
-				3028121B28ED239100D63CE0 /* Exp.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -201,6 +240,7 @@
 				30D3292A28B1926A00150DE2 /* CDF.swift */,
 				30D3292C28B1983200150DE2 /* PMF.swift */,
 				309409D828D3BC8B000B1AC6 /* BridgingHeader.h */,
+				3028122128EDDAB000D63CE0 /* RealNumbers.swift */,
 			);
 			path = ProbTh;
 			sourceTree = "<group>";
@@ -309,20 +349,28 @@
 				30DD371928EA7CE700C96A12 /* QQPlot.swift in Sources */,
 				309409D428D3B8EB000B1AC6 /* ContinuousRandomVariables.swift in Sources */,
 				30D3292528AC984400150DE2 /* Etc+Hashable.swift in Sources */,
+				303D475728EDE40E00E91D3C /* H.swift in Sources */,
 				30D3292728B18AEB00150DE2 /* ConditionalProb.swift in Sources */,
 				30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */,
 				309409D228D2838C000B1AC6 /* HW3.swift in Sources */,
+				303D475D28EE80F000E91D3C /* Multinomial.swift in Sources */,
 				30D3292928B190DD00150DE2 /* RandomVar.swift in Sources */,
 				30D3292128AC23C500150DE2 /* Theory.swift in Sources */,
+				303D475928EDE53000E91D3C /* Distribution.swift in Sources */,
 				3071C74928BFE2F400B07AEE /* HW1.swift in Sources */,
 				30D3292328AC274F00150DE2 /* AxiomsOfProbability.swift in Sources */,
+				303D475F28EF205800E91D3C /* Normal.swift in Sources */,
+				3028121E28EDD97900D63CE0 /* Geom.swift in Sources */,
+				3028122228EDDAB000D63CE0 /* RealNumbers.swift in Sources */,
 				30D3291A28AC193C00150DE2 /* main.swift in Sources */,
 				309409D028CEB99E000B1AC6 /* Matrix.swift in Sources */,
 				30D3292D28B1983200150DE2 /* PMF.swift in Sources */,
 				3099AA2D28D3C2CA00B16B30 /* Constants.swift in Sources */,
 				3028121C28ED239100D63CE0 /* Exp.swift in Sources */,
+				303D475428EDDE9500E91D3C /* NB.swift in Sources */,
 				3099AA2B28D3BF1400B16B30 /* pf_string.c in Sources */,
 				309409CD28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift in Sources */,
+				303D475B28EE7FBE00E91D3C /* Bin.swift in Sources */,
 				3099AA2A28D3BF1400B16B30 /* py.c in Sources */,
 				30777A8828E1475E00DFF06E /* Poisson.swift in Sources */,
 				3090179A28B67A93002EA19A /* SampleOrPopulation.swift in Sources */,
