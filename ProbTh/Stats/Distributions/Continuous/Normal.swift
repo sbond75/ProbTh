@@ -92,6 +92,9 @@ class Normal: SampleOrPopulation, Distribution {
         self.stdev = sqrt(variance)
     }
     
+    // The standard normal distribution (mean = 0, stdev = 1)
+    static var standard: Normal { Normal(mean: 0, stdev: 1) }
+    
     func xToZ(_ x: R) -> R {
         return (x - mean) / stdev
     }

@@ -55,11 +55,14 @@ func example1() {
 
 //QQPlot().plot(sample: Sample([1, 2, 3, 6, 9, 12, 15, 18, 19, 20]))
 
-QQPlot().plot(sample: Sample([4.1,1.8, 3.2, 1.9, 4.6, 2.0,4.5,3.9, 4.3, 2.3,
-3.8,1.9, 4.6, 1.8, 4.7, 1.8,4.6,1.9, 3.5, 4.0,
-3.7,3.7, 4.3, 3.6, 3.8, 3.8,3.8,2.5, 4.5, 4.1,
-3.7,3.8, 3.4, 4.0, 2.3, 4.4,4.1,4.3, 3.3, 2.0
-]))
+//QQPlot().plot(sample: Sample([4.1,1.8, 3.2, 1.9, 4.6, 2.0,4.5,3.9, 4.3, 2.3,
+//3.8,1.9, 4.6, 1.8, 4.7, 1.8,4.6,1.9, 3.5, 4.0,
+//3.7,3.7, 4.3, 3.6, 3.8, 3.8,3.8,2.5, 4.5, 4.1,
+//3.7,3.8, 3.4, 4.0, 2.3, 4.4,4.1,4.3, 3.3, 2.0
+//]))
+// TODO ^broken? should look like /Volumes/MyTestVolume/Sp1Semester1_Vanderbilt_University/Stats/Documents/Probability Plot Template (1).xlsx
+
+//let res = Poisson(items: 15, per: 10).p(XIsGreaterThan: 1)
 
 //initPython()
 

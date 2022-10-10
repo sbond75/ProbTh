@@ -23,7 +23,7 @@ class Poisson: SampleOrPopulation, Distribution {
     }
     
     func p(XIsLessThan x: Int) -> __0iTo1i {
-        p(XIsLessThan: x)
+        p(XIsLessThan: x, inNext: 1.0)
     }
     
     // MARK: SampleOrPopulation
