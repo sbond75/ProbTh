@@ -11,7 +11,7 @@ import Foundation
 import Bow
 
 // Inclusive 0 to 1.
-@propertyWrapper struct _0iTo1i<T: Numeric & Comparable> {
+@propertyWrapper struct _0iTo1i<T: Numeric & Comparable & CustomStringConvertible> {
     var value: T
 
     var wrappedValue: T {
@@ -26,7 +26,8 @@ import Bow
 
     init(wrappedValue: T) {
         assert(wrappedValue >= 0)
-        assert(wrappedValue <= 1)
+        assert(wrappedValue <= 1 || wrappedValue.description.starts(with: "1.000000")) // Hack to get it to work on edge cases
+        //assert(wrappedValue <= 1)
         self.value = wrappedValue
     }
 }

@@ -12,7 +12,7 @@ import Foundation
 class MultinomialDist: SampleOrPopulation, Distribution {
     // This takes in a list of x_1 through x_k where k is the number of outcomes and each x_i is the number of each outcome for which you are asking the probability.
     func p(groupSizesAreExactly x_i: [Int]) -> __0iTo1i {
-        guard x_i.reduce(0, +) == n && x_i.reduce(false, {$0 || 0 <= $1 && $1 <= n}) else { return __0iTo1i(ℝ_0to1: 0) }
+        guard x_i.reduce(0, +) == n && x_i.reduce(true, {$0 && (0 <= $1 && $1 <= n)}) else { return __0iTo1i(ℝ_0to1: 0) }
         return __0iTo1i(ℝ_0to1:
             bigIntToℝ(Multinomial(numberOfItemsToArrange: n, groupSizes: x_i).totalNumberOfChoices) * zip(p_i, x_i).reduce(1, {acc,pAndX_i in
                 let p_i = pAndX_i.0

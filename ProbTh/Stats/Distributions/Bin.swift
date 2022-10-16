@@ -17,9 +17,13 @@ class Bin: MultinomialDist {
         return p(groupSizesAreExactly: [x, n - x])
     }
     
-    override func p(XIsGreaterThan x: Int) -> __0iTo1i {
-        // Not yet implemented
-        fatalError()
+    override func p(XIsGreaterThan x: Int) -> __0iTo1i { // TODO: returns 1.0 if x < 0. Correct?
+        guard x+1 <= n else { return __0iTo1i(ℝ_0to1: 0) }
+        return __0iTo1i(ℝ_0to1:
+            (x+1...n).reduce(0, {acc,x in
+                acc + p(groupSizesAreExactly: [x, n - x]).ℝ_0to1
+            })
+        )
     }
     
     override func p(XIsLessThan x: Int) -> __0iTo1i {

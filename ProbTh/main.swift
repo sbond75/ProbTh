@@ -64,6 +64,10 @@ func example1() {
 
 //let res = Poisson(items: 15, per: 10).p(XIsGreaterThan: 1)
 
+//let res2 = Bin(numberOfTrials: 10, successRate: Exp(rate: 0.25).p(TIsLessThan: 3).ℝ_0to1).p(XIsGreaterThan: -1)
+
+let res3 = U(a: 0,b: 20).p(givenValueIsLessThanX: 5, andXIsLessThan: 15)
+
 //initPython()
 
 RunLoop.current.run()

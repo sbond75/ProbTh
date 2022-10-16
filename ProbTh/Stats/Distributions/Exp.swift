@@ -28,6 +28,10 @@ class Exp: Poisson {
         super.init(rate: poisson.rate)
         self.timeUnitFromEstimation = poisson.timeUnitFromEstimation
     }
+    // NOTE: this shouldn't be an override...?:
+    override init(rate: R) {
+        super.init(rate: rate)
+    }
     
     init(estimatingFromWaitingTimesForEachOccurrence waitingTimes: [R]) {
         let timeUnit = (waitingTimes.reduce(0, {acc,x in

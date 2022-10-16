@@ -126,6 +126,7 @@ class Normal: SampleOrPopulation, Distribution {
             }
             current += 0.01 / 5.0 / accuracy
         }
+        fatalError("potentially an error, check if `current <= 3.5` should be used instead of `current <= 3.49` in the while loop condition above")
         return current
     }
     
