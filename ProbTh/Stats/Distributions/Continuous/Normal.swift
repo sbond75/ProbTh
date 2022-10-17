@@ -112,6 +112,9 @@ class Normal: SampleOrPopulation, Distribution {
         let tmp = 0.5 * (1 + erf(z / sqrt(2.0)))
         return tmp
     }
+    private static func equalByEpsilon(_ a: Double, _ b: Double, epsilon: Double) -> Bool {
+        return abs(a - b) < epsilon
+    }
     static func zscore (for percentile: Double) -> Double {
         // Brute-force hack:
         let accuracy = 15.0
@@ -120,7 +123,7 @@ class Normal: SampleOrPopulation, Distribution {
         while current <= 3.49 {
             let p = Normal.percentile(zscore: current)
             //print(p, current)
-            if abs(p - percentile) < epsilon {
+            if equalByEpsilon(p, percentile, epsilon: epsilon) {
                 // Found it
                 return current
             }
@@ -128,6 +131,13 @@ class Normal: SampleOrPopulation, Distribution {
         }
         fatalError("potentially an error, check if `current <= 3.5` should be used instead of `current <= 3.49` in the while loop condition above")
         return current
+    }
+    // Notation type of thing. This gives the zscore with area alpha to its right.
+    static func Z(alpha: Double) -> Double {
+        let retval = zscore(for: 1 - alpha)
+        let funFact = -zscore(for: alpha)
+        assert(equalByEpsilon(retval, funFact, epsilon: 0.0105 /*0.0015*/), "Expected \(retval) to be nearly equal to \(funFact)") // Fun fact: these are equal. (Due to Swift implementation not using the z-table on http://www.z-table.com/ we have to have some epsilon for comparing here.)
+        return retval
     }
     
 }

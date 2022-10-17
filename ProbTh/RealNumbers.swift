@@ -60,4 +60,7 @@ func pow(_ x: R, _ p: Int) -> R {
 func sqrt(_ x: R) -> R {
     return doubleToℝ(sqrt(ℝtoDouble(x)))
 }
+func exp(_ x: R) -> R {
+    return doubleToℝ(exp(ℝtoDouble(x)))
+}
 // //

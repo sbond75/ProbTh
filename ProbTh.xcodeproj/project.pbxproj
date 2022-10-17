@@ -46,6 +46,7 @@
 		30DD371528EA7C4500C96A12 /* QuartzRenderer in Frameworks */ = {isa = PBXBuildFile; productRef = 30DD371428EA7C4500C96A12 /* QuartzRenderer */; };
 		30DD371728EA7C4500C96A12 /* SwiftPlot in Frameworks */ = {isa = PBXBuildFile; productRef = 30DD371628EA7C4500C96A12 /* SwiftPlot */; };
 		30DD371928EA7CE700C96A12 /* QQPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DD371828EA7CE700C96A12 /* QQPlot.swift */; };
+		30EEFFBD28FCE0750061DCE9 /* ConfidenceInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30EEFFBC28FCE0750061DCE9 /* ConfidenceInterval.swift */; };
 		4C9E88CA577D0CB9796B2F20 /* Pods_ProbTh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF911D77F5375479C17AAA7 /* Pods_ProbTh.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +106,7 @@
 		30D3292E28B528B300150DE2 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		30DD371328EA7C2200C96A12 /* swiftplot */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftplot; sourceTree = SOURCE_ROOT; };
 		30DD371828EA7CE700C96A12 /* QQPlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQPlot.swift; sourceTree = "<group>"; };
+		30EEFFBC28FCE0750061DCE9 /* ConfidenceInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfidenceInterval.swift; sourceTree = "<group>"; };
 		85BB65CF37C88EC3F09137D7 /* Pods-ProbTh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProbTh.debug.xcconfig"; path = "Target Support Files/Pods-ProbTh/Pods-ProbTh.debug.xcconfig"; sourceTree = "<group>"; };
 		DB5BF1A19FC7EAB2BEC3F70B /* Pods-ProbTh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProbTh.release.xcconfig"; path = "Target Support Files/Pods-ProbTh/Pods-ProbTh.release.xcconfig"; sourceTree = "<group>"; };
 		FAF911D77F5375479C17AAA7 /* Pods_ProbTh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProbTh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 				309409CC28CEB816000B1AC6 /* JointDiscreteRandomVariables.swift */,
 				309409D328D3B8EB000B1AC6 /* ContinuousRandomVariables.swift */,
 				3099AA4128D4180100B16B30 /* Measurement.swift */,
+				30EEFFBC28FCE0750061DCE9 /* ConfidenceInterval.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				3071C74928BFE2F400B07AEE /* HW1.swift in Sources */,
 				3001039528EFE35000121D19 /* Weibull.swift in Sources */,
 				30D3292328AC274F00150DE2 /* AxiomsOfProbability.swift in Sources */,
+				30EEFFBD28FCE0750061DCE9 /* ConfidenceInterval.swift in Sources */,
 				303D475F28EF205800E91D3C /* Normal.swift in Sources */,
 				3028121E28EDD97900D63CE0 /* Geom.swift in Sources */,
 				3028122228EDDAB000D63CE0 /* RealNumbers.swift in Sources */,
