@@ -13,7 +13,7 @@ class Bin: MultinomialDist {
     // MARK: Distribution
     
     override func p(XIsExactly x: Int) -> __0iTo1i {
-        guard x > 0 && x <= n else { return __0iTo1i(ℝ_0to1: 0) }
+        guard x >= 0 && x <= n else { return __0iTo1i(ℝ_0to1: 0) }
         return p(groupSizesAreExactly: [x, n - x])
     }
     

@@ -68,6 +68,8 @@ func example1() {
 
 let res3 = U(a: 0,b: 20).p(givenValueIsLessThanX: 5, andXIsLessThan: 15)
 
+let res4 = Bin(numberOfTrials: 3000,successRate: 1.0/1000).p(XIsExactly: 0)
+
 //initPython()
 
 RunLoop.current.run()
