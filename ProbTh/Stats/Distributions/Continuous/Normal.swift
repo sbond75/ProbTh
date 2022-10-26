@@ -120,6 +120,7 @@ class Normal: SampleOrPopulation, Distribution {
         let accuracy = 15.0
         let epsilon = 0.0002
         var current: Double = -3.40
+        // TODO: minor: Sam: use binary search instead of this ("bisection") for O(logn) instead of O(n) where n is 1/accuracy maybe
         while current <= 3.49 {
             let p = Normal.percentile(zscore: current)
             //print(p, current)

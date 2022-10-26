@@ -24,9 +24,28 @@ class ConfidenceInterval: CustomStringConvertible {
         let temp = zscore(forLevel: level) * stdev / plusOrMinus
         return temp * temp
     }
+    // For confidence intervals for proportions with Agresti-Coull
+    static func nForProportion(suchThatPlusOrMinusIs plusOrMinus: R, atLevel level: R) -> R {
+        let temp = zscore(forLevel: level) / plusOrMinus
+        return (temp * temp) * 0.5 * (1 - 0.5) - 4
+    }
+    // For confidence intervals for proportions with Agresti-Coull. oldP is the one we started with, i.e. ((#successes + 2) / (n + 4))
+    static func nTildeForProportion(suchThatPIsAtLeast p: R, atLevel level: R, oldP: R) -> R {
+        let temp = zscore(forLevel: level, oneSided: true) / -(p - oldP)
+        return (temp * temp) * oldP * (1 - oldP)
+    }
     // n is "at least" the given value.
     static func n(suchThatPlusOrMinusIsNoWiderThan plusOrMinus: R, atLevel level: R, givenStdev stdev: R) -> Int {
         return Int(ceil(ℝtoDouble(n(suchThatPlusOrMinusIs: plusOrMinus, atLevel: level, givenStdev: stdev))))
+    }
+    static func nForProportion(suchThatPlusOrMinusIsNoWiderThan plusOrMinus: R, atLevel level: R) -> Int {
+        return Int(ceil(ℝtoDouble(nForProportion(suchThatPlusOrMinusIs: plusOrMinus, atLevel: level))))
+    }
+    static func nForProportion(suchThatPIsAtLeast p: R, atLevel level: R, oldP: R) -> Int {
+        return Int(ceil(ℝtoDouble(nTildeForProportion(suchThatPIsAtLeast: p, atLevel: level, oldP: oldP)))) - 4
+    }
+    static func howManyMoreForProportion(suchThatPIsAtLeast p: R, atLevel level: R, oldP: R, existingNTilde n: Int) -> Int {
+        return nForProportion(suchThatPIsAtLeast: p, atLevel: level, oldP: oldP) - n
     }
     
     var lowerConfidenceBound: R {
