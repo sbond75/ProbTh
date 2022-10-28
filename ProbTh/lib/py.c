@@ -443,7 +443,7 @@ bool S_RunString(const char *str) {
 }
 
 // Returns a Python object on success, otherwise NULL. When finished with the return value, call `Py_XDECREF(result);` where `result` is the return value of this function.
-PyObject* S_RunStringAndGetResult(const char *str) {
+PyObject* S_EvalExpressionAndGetResult(const char *str) {
     printf("Running Python: %s\n", str);
     PyObject *main_module = PyImport_AddModule("__main__"); /* borrowed */
     if(!main_module)
@@ -451,7 +451,8 @@ PyObject* S_RunStringAndGetResult(const char *str) {
     
     PyObject *global_dict = PyModule_GetDict(main_module); /* borrowed */
     
-    PyObject *result = PyRun_StringFlags(str, Py_file_input /* Py_single_input for a single statement, or Py_file_input for more than a statement */, global_dict, global_dict, NULL);
+    PyObject *result = PyRun_StringFlags(str, Py_eval_input             //Py_file_input <-- returns None for the expression on success ( https://stackoverflow.com/questions/60313892/pyrun-string-returns-a-nonetype-object )          /* Py_single_input for a single statement, or Py_file_input for more than a statement */
+                                         , global_dict, global_dict, NULL);
 
     if(PyErr_Occurred()) {
         S_ShowLastError();

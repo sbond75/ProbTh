@@ -82,6 +82,7 @@ mkShell {
     (python3.withPackages(ps: with ps; [
       pyginac
       sympy
+      scipy
     ]))
     pkg-config
     
@@ -94,6 +95,6 @@ mkShell {
   ];
   
   shellHook = ''
-    export PYTHONPATH="$PYTHONPATH:${pyginac}/lib/python3.9/site-packages:${python3Packages.sympy}/lib/python3.9/site-packages:${python3Packages.mpmath}/lib/python3.9/site-packages"
+    export PYTHONPATH="$PYTHONPATH:${pyginac}/lib/python3.9/site-packages:${python3Packages.sympy}/lib/python3.9/site-packages:${python3Packages.mpmath}/lib/python3.9/site-packages:${python3Packages.scipy}/lib/python3.9/site-packages:${python3Packages.numpy}/lib/python3.9/site-packages"
   '';
 }

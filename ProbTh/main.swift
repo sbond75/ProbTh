@@ -70,11 +70,11 @@ func example1() {
 
 //let res4 = Bin(numberOfTrials: 3000,successRate: 1.0/1000).p(XIsExactly: 0)
 
-//initPython()
+initPython()
 
 RunLoop.current.run()
 
-//Py_Finalize()
+Py_Finalize()
 
 //var X=SampleOrPopulation_givenValues(nOrN: nil, mean: 61, variance: nil); var Y = SampleOrPopulation_givenValues(nOrN: nil, mean: 26, variance: nil); print((X + -9*Y).mean)
 

@@ -81,6 +81,13 @@ class Normal: SampleOrPopulation, Distribution {
         return __0iTo1i(ℝ_0to1: doubleToℝ(Normal.percentile(zscore: ℝtoDouble(xToZ(x)))))
     }
     
+    // Uses the central limit theorem on X̄ to say that X̄ has the normal distribution with mean µ and variance (σ^2)/n.
+    // NOTE: The Normal object you call the below method on should have a variance of simply σ^2, since this method finds the `n` in `(σ^2)/n` of `self`.
+    func n(suchThatProbabilityIs p: R, thatTheSampleMeanIsLessThan x: R) -> R {
+        let temp = (stdev * doubleToℝ(Normal.zscore(for: ℝtoDouble(p)))) / (x - mean)
+        return temp * temp
+    }
+    
     init(mean: R, stdev: R) {
         self.mean = mean
         self.stdev = stdev

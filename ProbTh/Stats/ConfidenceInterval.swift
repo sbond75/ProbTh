@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PythonKit
 
 class ConfidenceInterval: CustomStringConvertible {
     // (NOTE: `SampleOrPopulation` here is only used as a sample. This is because confidence intervals are supposed to be estiminate the mean of the population.)
@@ -59,12 +60,22 @@ class ConfidenceInterval: CustomStringConvertible {
     var X̄: R { xBar }
     
     var sample: SampleOrPopulation
+    var smallSample: Bool { sample.nOrN <= 30 }
     var plusOrMinus: R {
+        // Check for small sample
+        var score: R!
+        if smallSample {
+            score = ConfidenceInterval.tDistribution(ν: sample.nOrN - 1, α: (1 - level) / 2)
+        }
+        else {
+            score = ConfidenceInterval.zscore(forLevel: level)
+        }
+        
         // level = 1-alpha
         // => level - 1 = -alpha
         // => -level + 1 = alpha
         // => 1 - level = alpha
-        ConfidenceInterval.zscore(forLevel: level) * sample.stdev / sqrt(intToℝ(sample.nOrN))
+        return score * sample.stdev / sqrt(intToℝ(sample.nOrN))
     }
 
     // MARK: For reference
@@ -79,4 +90,19 @@ class ConfidenceInterval: CustomStringConvertible {
     // MARK: CustomStringConvertible
     
     var description: String { msg }
+    
+    // MARK: ConfidenceInterval with smallSample
+    
+    static func tDistribution(ν: Int, α: R) -> R {
+        // https://stackoverflow.com/questions/19339305/python-function-to-get-the-t-statistic
+        let res = PythonObject(pyrun("""
+            from scipy import stats
+            #Studnt, n=22,  2-tail
+            #stats.t.ppf(1-0.025, df)
+            # df=n-1=22-1=21
+            # print (stats.t.ppf(1-0.025, 21))
+            """, thenEval: "stats.t.ppf(1 - \(α), \(ν))")!)
+        print("value from the t-table:", res)
+        return doubleToℝ(Double(res)!)
+    }
 }
