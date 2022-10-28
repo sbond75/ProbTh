@@ -13,7 +13,21 @@ import PythonKit
 func pyrun(_ code: String) -> Bool {
     return S_RunString(code.cString(using: .utf8))
 }
-func pyeval(_ code: String) -> OwnedPyObjectPointer? {
+func pyeval(_ code: String) -> PythonObject? {
+    if let p = pyeval_(code) {
+        return PythonObject(p)
+    }
+    return nil
+}
+// Runs the given code and then evals the expression given, returning the result of the expression.
+func pyrun(_ run: String, thenEval eval: String) -> PythonObject? {
+    if let p = pyrun_(run, thenEval: eval) {
+        return PythonObject(p)
+    }
+    return nil
+}
+
+func pyeval_(_ code: String) -> OwnedPyObjectPointer? {
     //return Python.builtins["eval"].dynamicallyCall(withArguments: [code])
     //return Python.main["eval"].dynamicallyCall(withArguments: [code])
     //return Python.import("__main__")[dynamicMember: "__builtins__"][dynamicMember: "eval"].dynamicallyCall(withArguments: [code])
@@ -22,10 +36,10 @@ func pyeval(_ code: String) -> OwnedPyObjectPointer? {
     //return OwnedPyObjectPointer(S_EvalExpressionAndGetResult(UnsafePointer(ownedObj.bindMemory(to: Int8.self, capacity: 1))))
     return OwnedPyObjectPointer(S_EvalExpressionAndGetResult(code.cString(using: .utf8)))
 }
-// Runs the given code and then evals the expression given.
-func pyrun(_ run: String, thenEval eval: String) -> OwnedPyObjectPointer? {
+// Runs the given code and then evals the expression given, returning the result of the expression.
+func pyrun_(_ run: String, thenEval eval: String) -> OwnedPyObjectPointer? {
     if (pyrun(run)) {
-        return pyeval(eval)
+        return pyeval_(eval)
     }
     return nil
 }

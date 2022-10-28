@@ -95,14 +95,14 @@ class ConfidenceInterval: CustomStringConvertible {
     
     static func tDistribution(ν: Int, α: R) -> R {
         // https://stackoverflow.com/questions/19339305/python-function-to-get-the-t-statistic
-        let res = PythonObject(pyrun("""
+        let res = pyrun("""
             from scipy import stats
             #Studnt, n=22,  2-tail
             #stats.t.ppf(1-0.025, df)
             # df=n-1=22-1=21
             # print (stats.t.ppf(1-0.025, 21))
-            """, thenEval: "stats.t.ppf(1 - \(α), \(ν))")!)
-        print("value from the t-table:", res)
-        return doubleToℝ(Double(res)!)
+            """, thenEval: "stats.t.ppf(1 - \(α), \(ν))")
+        print("value from the t-table:", res ?? "nil")
+        return doubleToℝ(Double(res!)!)
     }
 }
