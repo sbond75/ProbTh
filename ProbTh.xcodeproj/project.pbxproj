@@ -14,6 +14,7 @@
 		3028121C28ED239100D63CE0 /* Exp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028121B28ED239100D63CE0 /* Exp.swift */; };
 		3028121E28EDD97900D63CE0 /* Geom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028121D28EDD97900D63CE0 /* Geom.swift */; };
 		3028122228EDDAB000D63CE0 /* RealNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028122128EDDAB000D63CE0 /* RealNumbers.swift */; };
+		303691DE2912025E006D7DA8 /* HypothesisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303691DD2912025E006D7DA8 /* HypothesisTests.swift */; };
 		303D475428EDDE9500E91D3C /* NB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475328EDDE9500E91D3C /* NB.swift */; };
 		303D475728EDE40E00E91D3C /* H.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475628EDE40E00E91D3C /* H.swift */; };
 		303D475928EDE53000E91D3C /* Distribution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475828EDE53000E91D3C /* Distribution.swift */; };
@@ -70,6 +71,7 @@
 		3028121B28ED239100D63CE0 /* Exp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exp.swift; sourceTree = "<group>"; };
 		3028121D28EDD97900D63CE0 /* Geom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geom.swift; sourceTree = "<group>"; };
 		3028122128EDDAB000D63CE0 /* RealNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealNumbers.swift; sourceTree = "<group>"; };
+		303691DD2912025E006D7DA8 /* HypothesisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypothesisTests.swift; sourceTree = "<group>"; };
 		303D475328EDDE9500E91D3C /* NB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NB.swift; sourceTree = "<group>"; };
 		303D475628EDE40E00E91D3C /* H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H.swift; sourceTree = "<group>"; };
 		303D475828EDE53000E91D3C /* Distribution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distribution.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				309409D328D3B8EB000B1AC6 /* ContinuousRandomVariables.swift */,
 				3099AA4128D4180100B16B30 /* Measurement.swift */,
 				30EEFFBC28FCE0750061DCE9 /* ConfidenceInterval.swift */,
+				303691DD2912025E006D7DA8 /* HypothesisTests.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				30EEFFBD28FCE0750061DCE9 /* ConfidenceInterval.swift in Sources */,
 				303D475F28EF205800E91D3C /* Normal.swift in Sources */,
 				3028121E28EDD97900D63CE0 /* Geom.swift in Sources */,
+				303691DE2912025E006D7DA8 /* HypothesisTests.swift in Sources */,
 				3028122228EDDAB000D63CE0 /* RealNumbers.swift in Sources */,
 				30D3291A28AC193C00150DE2 /* main.swift in Sources */,
 				309409D028CEB99E000B1AC6 /* Matrix.swift in Sources */,

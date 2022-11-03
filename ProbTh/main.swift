@@ -70,11 +70,13 @@ func example1() {
 
 //let res4 = Bin(numberOfTrials: 3000,successRate: 1.0/1000).p(XIsExactly: 0)
 
-initPython()
+//let res5 = ConfidenceInterval(sample: SampleOrPopulation_givenValues(nOrN: 140, mean: 11.9, stdev: 1.1), level: 0.95).description
+
+//let res6 = ConfidenceInterval.agrestiCoullLevelForProportion(moreThan: 0.7, numerator: 73, denominator: 100)
 
 RunLoop.current.run()
 
-Py_Finalize()
+deinitPython()
 
 //var X=SampleOrPopulation_givenValues(nOrN: nil, mean: 61, variance: nil); var Y = SampleOrPopulation_givenValues(nOrN: nil, mean: 26, variance: nil); print((X + -9*Y).mean)
 

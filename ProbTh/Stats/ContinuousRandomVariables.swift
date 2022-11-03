@@ -11,6 +11,8 @@ import PythonKit
 
 // Returns true on success
 func pyrun(_ code: String) -> Bool {
+    initPython()
+    
     return S_RunString(code.cString(using: .utf8))
 }
 func pyeval(_ code: String) -> PythonObject? {
@@ -28,6 +30,8 @@ func pyrun(_ run: String, thenEval eval: String) -> PythonObject? {
 }
 
 func pyeval_(_ code: String) -> OwnedPyObjectPointer? {
+    initPython()
+    
     //return Python.builtins["eval"].dynamicallyCall(withArguments: [code])
     //return Python.main["eval"].dynamicallyCall(withArguments: [code])
     //return Python.import("__main__")[dynamicMember: "__builtins__"][dynamicMember: "eval"].dynamicallyCall(withArguments: [code])
@@ -68,8 +72,11 @@ func integTest() {
     let integrationSuccess = pyrun("x = Symbol('x'); print(pretty(integrate(x**2 + x + 1, x)))")
 }
 
+fileprivate var inittedPython = false
 // Set PYTHONPATH
 func initPython() {
+    guard !inittedPython else { return }
+    
     // Warm-up interpreter
     let sys = Python.import("sys")
     
@@ -78,4 +85,14 @@ func initPython() {
     if !success { fatalError() }
     
     //integTest()
+    
+    inittedPython = true
+}
+
+func deinitPython() {
+    guard inittedPython else { return }
+    
+    Py_Finalize()
+    
+    inittedPython = false
 }

@@ -296,6 +296,22 @@ func - (left: ℝ, right: SampleOrPopulation_givenValues) -> SampleOrPopulation_
     return SampleOrPopulation_givenValues(nOrN: right.nOrN, mean: left - right.mean, variance: right.variance)
 }
 
+// MARK: Operations on left-hand-side `SampleOrPopulation` and right-hand-side `SampleOrPopulation`
+//
+//func + (left: SampleOrPopulation_impl, right: SampleOrPopulation_impl) -> SampleOrPopulation_impl {
+//    assert(left.nOrN == right.nOrN)
+//    return Sample(zip(left.sampleOrPopulation, right.sampleOrPopulation).map{xAndY in
+//        xAndY.0 + xAndY.1
+//    })
+//}
+//
+//func - (left: SampleOrPopulation_impl, right: SampleOrPopulation_impl) -> SampleOrPopulation_impl {
+//    assert(left.nOrN == right.nOrN)
+//    return Sample(zip(left.sampleOrPopulation, right.sampleOrPopulation).map{xAndY in
+//        xAndY.0 - xAndY.1
+//    })
+//}
+
 // MARK: Operations on `SampleOrPopulation_givenValues`
 
 func + (left: SampleOrPopulation_givenValues, right: SampleOrPopulation_givenValues) -> SampleOrPopulation_givenValues {

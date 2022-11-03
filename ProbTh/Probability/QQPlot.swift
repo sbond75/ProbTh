@@ -50,6 +50,6 @@ class QQPlot {
             print(e)
         }
         
-        exit(0)
+        //exit(0)
     }
 }
