@@ -74,6 +74,8 @@ func example1() {
 
 //let res6 = ConfidenceInterval.agrestiCoullLevelForProportion(moreThan: 0.7, numerator: 73, denominator: 100)
 
+//let res7 = DifferenceConfidenceIntervalForProportions(proportionNumerator: 841, n: 5320, minus: 134, n2: 1120, level: 0.98).description
+
 RunLoop.current.run()
 
 deinitPython()

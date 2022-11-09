@@ -170,3 +170,137 @@ class ConfidenceInterval: CI {
 //    assert(lhs.level == rhs.level && lhs.sampleStdev == rhs.sampleStdev)
 //    return ConfidenceInterval(sample: lhs.sample - rhs.sample, level: lhs.level, sampleStdev: lhs.sampleStdev)
 //}
+
+
+class DifferenceConfidenceInterval: CI {
+    // MARK: CI
+    
+    var lhs: R { // Implement in child classes
+        fatalError()
+    }
+    
+    var plusOrMinus: R { plusOrMinus() }
+    
+    var level: R
+    
+    var item: String { // Implement in child classes
+        fatalError()
+    }
+    
+    var description: String { "We are \(level * 100)% confident that \(item) is within \(lhs) ± \(plusOrMinus)" }
+    
+    // MARK: DifferenceConfidenceInterval
+    
+    init() { // Implement in child classes
+        level = 0
+    }
+    
+    func plusOrMinus(oneSided: Bool = false) -> R {
+        // Implement in child classes
+        fatalError()
+    }
+    
+    var lowerConfidenceBound: R {
+        lhs - plusOrMinus(oneSided: true)
+    }
+    var upperConfidenceBound: R {
+        lhs + plusOrMinus(oneSided: true)
+    }
+    var interval: (R, R) { (lhs - plusOrMinus, lhs + plusOrMinus) }
+    
+    var useTDist: Bool { // Implement in child classes
+        fatalError()
+    }
+}
+
+class DifferenceConfidenceIntervalForMeans: DifferenceConfidenceInterval {
+    override var lhs: R { abs(self.sample.mean - self.sample2.mean) }
+    
+    override var item: String { "μₓ - μᵧ" } // (Use μ since this is an estimate for the population mean difference, not for the sample means with bars on it.)
+    //override var item: String { "X̄ - Ȳ" }
+    
+    init(sample: SampleOrPopulation, minus sample2: SampleOrPopulation, level: R, bothAreSampleStdev: Bool = false) {
+        self.sample = sample
+        self.sample2 = sample2
+        super.init()
+        self.level = level
+        self.sampleStdev = bothAreSampleStdev
+    }
+    
+    var degreeOfFreedom: R {
+        let temp1 = sample.variance / intToℝ(sample.nOrN)
+        let temp2 = sample2.variance / intToℝ(sample2.nOrN)
+        let temp3 = temp1 + temp2
+        let degreeOfFreedom = floor((temp3 * temp3) / ((temp1 * temp1) / (intToℝ(sample.nOrN) - 1) + (temp2 * temp2) / (intToℝ(sample2.nOrN) - 1)))
+        return degreeOfFreedom
+    }
+    
+    override func plusOrMinus(oneSided: Bool = false) -> R {
+        // Check for small sample
+        var score: R!
+        if useTDist {
+            //precondition(sampleStdev)
+            let degreeOfFreedom = self.degreeOfFreedom
+            if degreeOfFreedom > 30 {
+                print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Edge case")
+                score = ConfidenceInterval.zscore(forLevel: level, oneSided: oneSided)
+            }
+            else {
+                score = ConfidenceInterval.tDistribution(ν: ℝtoInt(degreeOfFreedom), α: (1 - level) / (oneSided ? 1 : 2))
+            }
+        }
+        else {
+            //precondition(!sampleStdev)
+            score = ConfidenceInterval.zscore(forLevel: level, oneSided: oneSided)
+        }
+        
+        return score * sqrt(sample.variance / intToℝ(sample.nOrN) + sample2.variance / intToℝ(sample2.nOrN))
+    }
+    
+    var sampleStdev: Bool = false
+    var sample: SampleOrPopulation
+    var sample2: SampleOrPopulation
+    var smallSample: Bool { sample.nOrN <= 30 && sample2.nOrN <= 30 }
+    override var useTDist: Bool { smallSample }
+}
+
+// Uses Agresti-Coull modification.
+class DifferenceConfidenceIntervalForProportions: DifferenceConfidenceInterval {
+    override var lhs: R { abs(pTilde - p2Tilde) }
+
+    override var item: String { "pₓ - pᵧ" }
+    
+    init(proportionNumerator: Int, n: Int, minus proportionNumerator2: Int, n2: Int, level: R) {
+        self.proportionNumerator = proportionNumerator
+        self.n = n
+        self.proportionNumerator2 = proportionNumerator2
+        self.n2 = n2
+        super.init()
+        self.level = level
+    }
+    
+    override func plusOrMinus(oneSided: Bool = false) -> R {
+        // Check for small sample
+        var score: R!
+        if useTDist {
+            score = ConfidenceInterval.tDistribution(ν: n + n2 - 2 /*TODO: correct?*/, α: (1 - level) / (oneSided ? 1 : 2))
+        }
+        else {
+            score = ConfidenceInterval.zscore(forLevel: level, oneSided: oneSided)
+        }
+        
+        let res1 = pTilde * (1-pTilde) / intToℝ(nTilde)
+        let res2 = p2Tilde * (1-p2Tilde) / intToℝ(n2Tilde)
+        return score * sqrt(res1 + res2)
+    }
+    
+    var proportionNumerator: Int
+    var pTilde: R { (intToℝ(proportionNumerator) + 1) / intToℝ(nTilde) }
+    var n: Int
+    var nTilde: Int { n + 2 }
+    var proportionNumerator2: Int
+    var p2Tilde: R { (intToℝ(proportionNumerator2) + 1) / intToℝ(n2Tilde) }
+    var n2: Int
+    var n2Tilde: Int { n2 + 1 }
+    override var useTDist: Bool { false }
+}

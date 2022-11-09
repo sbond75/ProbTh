@@ -24,6 +24,9 @@ typealias ℝ = R
 func ℝtoDouble(_ ℝ: ℝ) -> Double {
     return NSDecimalNumber(decimal: ℝ).doubleValue
 }
+func ℝtoInt(_ ℝ: ℝ) -> Int {
+    return NSDecimalNumber(decimal: ℝ).intValue
+}
 
 func doubleToℝ(_ double: Double) -> ℝ {
     return Decimal(double)
@@ -62,5 +65,11 @@ func sqrt(_ x: R) -> R {
 }
 func exp(_ x: R) -> R {
     return doubleToℝ(exp(ℝtoDouble(x)))
+}
+func floor(_ x: R) -> R {
+    return doubleToℝ(floor(ℝtoDouble(x)))
+}
+func ceil(_ x: R) -> R {
+    return doubleToℝ(ceil(ℝtoDouble(x)))
 }
 // //
