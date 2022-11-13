@@ -3,16 +3,19 @@ PODS:
   - Bow (0.8.0)
   - BowGeneric (0.8.0):
     - Bow (~> 0.8.0)
+  - SwiftyStats (1.1.7)
 
 DEPENDENCIES:
   - BigInt (from `https://github.com/attaswift/BigInt`, tag `v5.3.0`)
   - Bow (~> 0.8.0)
   - BowGeneric (~> 0.8.0)
+  - SwiftyStats (~> 1.1.7)
 
 SPEC REPOS:
   trunk:
     - Bow
     - BowGeneric
+    - SwiftyStats
 
 EXTERNAL SOURCES:
   BigInt:
@@ -28,7 +31,8 @@ SPEC CHECKSUMS:
   BigInt: 6de9bd5382015cc6aef4b0a2b27f6645045829f2
   Bow: a709b8d14ac59d7f1d2f8388891c8632628e7575
   BowGeneric: 6692347e82564a922f1e8db3fcd3dbf08e889514
+  SwiftyStats: c0a4bc658169d812e932a1e6f576b36d90171ea7
 
-PODFILE CHECKSUM: cc8c20627fc9389c6e2e4f8b0db9357bf668a601
+PODFILE CHECKSUM: 0c1a4fe7c9f95672a45eee472d0c846af1bc4536
 
 COCOAPODS: 1.9.1

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyStats
 
 enum Relation: CustomStringConvertible {
     case lessThan
@@ -75,6 +76,33 @@ struct HypothesisTest: CustomStringConvertible {
             fatalError("Not yet implemented")
         }
     }
+    
+    func pvalue(χ² testStatistic: R, degreeOfFreedom: Int) -> PValue {
+        assert(isH0) // Otherwise, not yet implemented. (H1 shouldn't be too bad to check for -- invert all conditions maybe?)
+        
+        do {
+            switch lhsStatus {
+            case .lessThanOrEqualTo:
+                return PValue(pvalue: __0iTo1i(ℝ_0to1: doubleToℝ(
+                    try SSProbDist.ChiSquare.cdf(chi: ℝtoDouble(testStatistic), degreesOfFreedom: Double(degreeOfFreedom))
+                )), twoSided: false)
+            case .equalTo:
+                return PValue(pvalue: __0iTo1i(ℝ_0to1: doubleToℝ(
+                    try 2 * SSProbDist.ChiSquare.cdf(chi: ℝtoDouble(testStatistic), degreesOfFreedom: Double(degreeOfFreedom))
+                )), twoSided: true)
+            case .greaterThanOrEqualTo:
+                return PValue(pvalue: __0iTo1i(ℝ_0to1: doubleToℝ(
+                    try SSProbDist.ChiSquare.cdf(chi: ℝtoDouble(testStatistic), degreesOfFreedom: Double(degreeOfFreedom))
+                )), twoSided: false)
+            default:
+                fatalError("Not yet implemented")
+            }
+        }
+        catch let error {
+            print("pvalue() error:", error)
+            fatalError()
+        }
+    }
 }
 
 struct PValue {
@@ -100,7 +128,8 @@ struct PValue {
     
     static func pvalueRelationToAlpha(of ht: HypothesisTest, given confidenceInterval: CI) -> (Relation, String /* description */) {
         let ci = confidenceInterval
-        assert(ci.item == "μ")
+        assert(ci.item == ht.lhs) // Basic sanity check
+        assert(ci.item == "μ") // Otherwise, not yet implemented.
         assert(ht.lhsStatus == .equalTo && ht.isH0) // Otherwise, not yet implemented. (H1 shouldn't be too bad to check for -- invert all conditions maybe?)
         // TODO: assert ci is two-sided, else `alpha` below changes
         let alpha = 1 - ci.level
@@ -121,15 +150,37 @@ struct PValue {
     }
     
     static func pvalue(of ht: HypothesisTest,
-                       given confidenceInterval: ConfidenceInterval /* NOTE: `level:` can be left 0 for no level.. */) -> PValue {
+                       given confidenceInterval: ConfidenceInterval /* NOTE: `level:` can be left nil, it is unused. */) -> PValue {
         let ci = confidenceInterval
-        assert(ci.item == "μ")
-        assert(ht.isH0) // Otherwise, not yet implemented. (H1 shouldn't be too bad to check for -- invert all conditions maybe?)
+        assert(ci.item == ht.lhs) // Basic sanity check
+        if ci.item == "μ" {
+            assert(ht.isH0) // Otherwise, not yet implemented. (H1 shouldn't be too bad to check for -- invert all conditions maybe?)
         
-        // "Z"
-        let testStatistic = (ci.X̄ - ht.lhs_0) / (ci.sample.stdev / sqrt(intToℝ(ci.sample.nOrN)))
+            // "Z"
+            let testStatistic = (ci.X̄ - ht.lhs_0) / (ci.sample.stdev / sqrt(intToℝ(ci.sample.nOrN)))
         
-        return ht.pvalue(Z: testStatistic)
+            return ht.pvalue(Z: testStatistic)
+        }
+        else if ci.item == "σ²" {
+            assert(ht.isH0) // Otherwise, not yet implemented. (H1 shouldn't be too bad to check for -- invert all conditions maybe?)
+            
+            if let rhs = ht.rhs {
+                // Test for two-somethings
+                if rhs == ht.lhs {
+                    // Test for two-variances
+                    //let possible1 =
+                    // TODO: implement (6.11), using F-table ( SSProbDist.FRatio -- https://strike65.github.io/SwiftyStats/docs/Enums/SSProbDist/FRatio.html#/s:11SwiftyStats10SSProbDistO6FRatioO3cdf1f11numeratorDF011denominatorH0xx_xxtKSeRzSERzAA15SSFloatingPointRzlFZ )
+                    fatalError()
+                }
+                fatalError("Unknown test")
+            }
+            // Chi-squared (χ²)
+            let testStatistic = intToℝ(ci.sample.nOrN - 1) * ci.sample.variance / ht.lhs_0 // ht.lhs_0 is sigma_{0}^2.
+            return ht.pvalue(χ²: testStatistic, degreeOfFreedom: ci.sample.nOrN - 1)
+        }
+        else {
+            fatalError("Unknown test")
+        }
     }
     
     static func pvalue(of ht: HypothesisTest,

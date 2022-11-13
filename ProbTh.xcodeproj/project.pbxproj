@@ -35,6 +35,7 @@
 		3099AA2B28D3BF1400B16B30 /* pf_string.c in Sources */ = {isa = PBXBuildFile; fileRef = 3099AA2728D3BF1300B16B30 /* pf_string.c */; };
 		3099AA2D28D3C2CA00B16B30 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3099AA2C28D3C2CA00B16B30 /* Constants.swift */; };
 		3099AA4228D4180100B16B30 /* Measurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3099AA4128D4180100B16B30 /* Measurement.swift */; };
+		30D0F35F291E034900470180 /* ChiSquaredTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0F35E291E034900470180 /* ChiSquaredTests.swift */; };
 		30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */; };
 		30D3291A28AC193C00150DE2 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3291928AC193C00150DE2 /* main.swift */; };
 		30D3292128AC23C500150DE2 /* Theory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D3292028AC23C500150DE2 /* Theory.swift */; };
@@ -95,6 +96,7 @@
 		3099AA2928D3BF1400B16B30 /* py.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = py.h; sourceTree = "<group>"; };
 		3099AA2C28D3C2CA00B16B30 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = SOURCE_ROOT; };
 		3099AA4128D4180100B16B30 /* Measurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measurement.swift; sourceTree = "<group>"; };
+		30D0F35E291E034900470180 /* ChiSquaredTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChiSquaredTests.swift; sourceTree = "<group>"; };
 		30D29A1228B7D6D200DBCC86 /* QuantitativeOrQualitative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantitativeOrQualitative.swift; sourceTree = "<group>"; };
 		30D3291628AC193C00150DE2 /* ProbTh */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ProbTh; sourceTree = BUILT_PRODUCTS_DIR; };
 		30D3291928AC193C00150DE2 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				3099AA4128D4180100B16B30 /* Measurement.swift */,
 				30EEFFBC28FCE0750061DCE9 /* ConfidenceInterval.swift */,
 				303691DD2912025E006D7DA8 /* HypothesisTests.swift */,
+				30D0F35E291E034900470180 /* ChiSquaredTests.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				30D29A1328B7D6D200DBCC86 /* QuantitativeOrQualitative.swift in Sources */,
 				309409D228D2838C000B1AC6 /* HW3.swift in Sources */,
 				3001039328EFDFA500121D19 /* Uniform.swift in Sources */,
+				30D0F35F291E034900470180 /* ChiSquaredTests.swift in Sources */,
 				303D475D28EE80F000E91D3C /* Multinomial.swift in Sources */,
 				30D3292928B190DD00150DE2 /* RandomVar.swift in Sources */,
 				30D3292128AC23C500150DE2 /* Theory.swift in Sources */,

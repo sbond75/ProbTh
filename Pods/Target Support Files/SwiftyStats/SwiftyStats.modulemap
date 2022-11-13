@@ -1,0 +1,6 @@
+framework module SwiftyStats {
+  umbrella header "SwiftyStats-umbrella.h"
+
+  export *
+  module * { export * }
+}

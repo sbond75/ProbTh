@@ -9,6 +9,7 @@ target 'ProbTh' do
   # https://github.com/bow-swift/bow
   pod "Bow",                 "~> 0.8.0"
   pod "BowGeneric",          "~> 0.8.0"
+  pod "SwiftyStats",         "~> 1.1.7"
 
   # https://github.com/attaswift/BigInt
   #pod 'BigInt', '~> 5.3'

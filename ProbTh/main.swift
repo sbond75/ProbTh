@@ -76,6 +76,12 @@ func example1() {
 
 //let res7 = DifferenceConfidenceIntervalForProportions(proportionNumerator: 841, n: 5320, minus: 134, n2: 1120, level: 0.98).description
 
+//let res8 = PValue.pvalue(of: HypothesisTest(lhs_0: 4, lhsStatus: .greaterThanOrEqualTo, isH0: true, lhs: "σ²"), given: ConfidenceInterval(sample: SampleOrPopulation_givenValues(nOrN: 25, mean: nil, stdev: 1.5), sampleStdev: true, item: "σ²"))
+
+//let res9 = ConfidenceInterval(sample: Sample([14.02,13.97,14.11,14.12,14.10,14.02,14.15,13.97,14.05,14.04,14.11,14.12]), level: 0.98, sampleStdev: true, item: "σ").description // not yet implemented..
+
+let res10 = IndependenceTest(observed: Matrix([[1,2],[3,4]])).testStatistic
+
 RunLoop.current.run()
 
 deinitPython()

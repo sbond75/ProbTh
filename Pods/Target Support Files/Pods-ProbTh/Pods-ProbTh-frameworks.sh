@@ -200,11 +200,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Bow/Bow.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BowGeneric/BowGeneric.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyStats/SwiftyStats.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Bow/Bow.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BowGeneric/BowGeneric.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyStats/SwiftyStats.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

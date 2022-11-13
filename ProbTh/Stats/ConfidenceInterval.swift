@@ -8,6 +8,7 @@
 
 import Foundation
 import PythonKit
+import SwiftyStats
 
 protocol CI: CustomStringConvertible {
     var lhs: R { get }
@@ -33,10 +34,11 @@ class ConfidenceInterval: CI {
     // (NOTE: `SampleOrPopulation` here is only used as a sample but with its stdev treated as σ (population stdev). The `SampleOrPopulation` is treated mostly as a `Sample` because confidence intervals are supposed to be estimating things about the *population*, such as the mean of the population.)
     // NOTE: SampleOrPopulation is assumed to contain X̄ and σ unless you specify true for the S parameter which will make it use `sample`'s stdev as sample stdev instead of population stdev.
     // NOTE: If n <= 30 in the sample, then it is a small sample, so the t-distribution will be used if you provide true for S (since t-distribution requires sample stdev only).
-    init(sample: SampleOrPopulation, level: R, sampleStdev: Bool = false) {
+    init(sample: SampleOrPopulation, level: R? = nil, sampleStdev: Bool = false, item: String = "μ") {
         self.sample = sample
-        self.level = level
+        self.level_ = level
         self.sampleStdev = sampleStdev
+        self.item = item
     }
     
     static func zscore(forLevel level: R, oneSided: Bool = false) -> R {
@@ -99,50 +101,140 @@ class ConfidenceInterval: CI {
     }
     
     var lowerConfidenceBound: R {
-        xBar - ConfidenceInterval.zscore(forLevel: level, oneSided: true) * sample.stdev / sqrt(intToℝ(sample.nOrN))
+        if item == "μ" {
+            return xBar - plusOrMinus(oneSided: true)
+        }
+        else if item == "σ" || item == "σ²" {
+            return lowerOrUpperOneSidedConfidenceBound(upper: false)
+        }
+        else {
+            fatalError()
+        }
     }
     var upperConfidenceBound: R {
-        xBar + ConfidenceInterval.zscore(forLevel: level, oneSided: true) * sample.stdev / sqrt(intToℝ(sample.nOrN))
+        if item == "μ" {
+            return xBar + plusOrMinus(oneSided: true)
+        }
+        else if item == "σ" || item == "σ²" {
+            return lowerOrUpperOneSidedConfidenceBound(upper: true)
+        }
+        else {
+            fatalError()
+        }
+    }
+    func lowerOrUpperOneSidedConfidenceBound(upper: Bool) -> R {
+        assert(item == "σ" || item == "σ²")
+        let oneSided = true
+        
+        // Section 5.8: Confidence intervals for variances and stdevs
+        let numerator = intToℝ(n - 1) * sample.variance
+        let testStatistic = (1 - level) / (oneSided ? 1 : 2)
+        let degreeOfFreedom = n - 1
+        do {
+            let temp = numerator / doubleToℝ(try SSProbDist.ChiSquare.cdf(chi: ℝtoDouble(upper ? 1 - testStatistic : testStatistic), degreesOfFreedom: Double(degreeOfFreedom)))
+            return (item == "σ²" ? temp : sqrt(temp))
+        }
+        catch let error {
+            print("ConfidenceInterval.plusOrMinus(): error: \(error)")
+            fatalError()
+        }
     }
     
     var xBar: R { sample.mean }
     var X̄: R { xBar }
     var sampleStdev: Bool = false
     
+    var n: Int { sample.nOrN }
     var sample: SampleOrPopulation
     var smallSample: Bool { sample.nOrN <= 30 }
     var useTDist: Bool { smallSample && sampleStdev }
     var plusOrMinus: R {
-        // Check for small sample
-        var score: R!
-        if useTDist {
-            score = ConfidenceInterval.tDistribution(ν: sample.nOrN - 1, α: (1 - level) / 2)
+        plusOrMinus(oneSided: false)
+    }
+    func plusOrMinus(oneSided: Bool) -> R {
+        if item == "μ" {
+            // Check for small sample
+            var score: R!
+            if useTDist {
+                score = ConfidenceInterval.tDistribution(ν: sample.nOrN - 1, α: (1 - level) / (oneSided ? 1 : 2))
+            }
+            else {
+                score = ConfidenceInterval.zscore(forLevel: level, oneSided: oneSided)
+            }
+            
+            // level = 1-alpha
+            // => level - 1 = -alpha
+            // => -level + 1 = alpha
+            // => 1 - level = alpha
+            return score * sample.stdev / sqrt(intToℝ(sample.nOrN))
+        }
+        else if item == "σ" || item == "σ²" {
+            if oneSided {
+                fatalError("Not a single number but two numbers")
+            }
+            else {
+                fatalError("Not yet implemented") // might actually also be impossible..
+            }
         }
         else {
-            score = ConfidenceInterval.zscore(forLevel: level)
+            fatalError("Unknown test")
         }
-        
-        // level = 1-alpha
-        // => level - 1 = -alpha
-        // => -level + 1 = alpha
-        // => 1 - level = alpha
-        return score * sample.stdev / sqrt(intToℝ(sample.nOrN))
     }
 
     // MARK: For reference
     
-    var level: R
+    var level: R {
+        guard let level_ = level_ else {
+            fatalError()
+        }
+        return level_
+    }
+    var level_: R?
     
-    // "We are (`level` * 100)% confident that μ is within X̄ ± `plusOrMinus`"
-    var msg: String { "We are \(level * 100)% confident that \(item) is within \(xBar) ± \(plusOrMinus)" }
+    // For means: example: "We are (`level` * 100)% confident that μ is within X̄ ± `plusOrMinus`"
+    var msg: String { "We are \(level * 100)% confident that \(item) is within \(lhs) ± \(plusOrMinus)" }
     
-    var interval: (R, R) { (X̄ - plusOrMinus, X̄ + plusOrMinus) }
+    var interval: (R, R) {
+        if item == "μ" {
+            return (X̄ - plusOrMinus, X̄ + plusOrMinus)
+        }
+        else if item == "σ" || item == "σ²" {
+            fatalError("broken, todo")
+            
+            // Section 5.8: Confidence intervals for variances and stdevs
+            let numerator = intToℝ(n - 1) * sample.variance
+            let testStatistic = (1 - level) / 2
+            let degreeOfFreedom = n - 1
+            do {
+                let interval = (numerator / doubleToℝ(try SSProbDist.ChiSquare.cdf(chi: ℝtoDouble(testStatistic), degreesOfFreedom: Double(degreeOfFreedom))),
+                                numerator / doubleToℝ(try SSProbDist.ChiSquare.cdf(chi: ℝtoDouble(1 - testStatistic), degreesOfFreedom: Double(degreeOfFreedom))))
+                return (item == "σ²" ? interval.0 : sqrt(interval.0), item == "σ²" ? interval.1 : sqrt(interval.1))
+            }
+            catch let error {
+                print("ConfidenceInterval.interval: error: \(error)")
+                fatalError()
+            }
+        }
+        else {
+            fatalError("Unknown test")
+        }
+    }
     
     // MARK: CI
     
-    var lhs: R { xBar }
+    var lhs: R {
+        if item == "μ" {
+            return X̄
+        }
+        else if item == "σ" || item == "σ²" {
+            return (item == "σ²" ? sample.variance : sample.stdev)
+        }
+        else {
+            fatalError("Unknown test")
+        }
+    }
     
-    var item: String { "μ" }
+    var item: String
     
     // MARK: CustomStringConvertible
     
@@ -303,4 +395,60 @@ class DifferenceConfidenceIntervalForProportions: DifferenceConfidenceInterval {
     var n2: Int
     var n2Tilde: Int { n2 + 1 }
     override var useTDist: Bool { false }
+}
+
+class DifferenceConfidenceIntervalForPairedData: DifferenceConfidenceInterval {
+    override var lhs: R { sample.mean }
+
+    override var item: String { item_ }
+    internal var item_: String
+    
+    // `item` can be `μ` to get the mean of the difference between each pair in `items`.
+    init(items: [(R, R)], item: String, level: R) {
+        // First, find out if more (>50%) of {the first item in the pair minus the second item} are positive, or not:
+        var positive = 0
+        for xAndY in items {
+            if xAndY.0 > xAndY.1 {
+                positive += 1
+            }
+        }
+        self.firstMinusSecondIsGood = positive >= items.count / 2
+        let firstMinusSecondIsGood = self.firstMinusSecondIsGood
+        
+        self.sample = Sample(items.reduce([], {(acc: [R], xAndY: (R, R)) -> [R] in
+            return acc + [firstMinusSecondIsGood ? xAndY.0 - xAndY.1 : xAndY.1 - xAndY.0]
+        }))
+        self.item_ = item
+        super.init()
+        self.level = level
+    }
+    
+    convenience init(items1: [R], items2: [R], item: String, level: R) {
+        self.init(items: Array(zip(items1, items2)), item: item, level: level)
+    }
+    
+    override func plusOrMinus(oneSided: Bool = false) -> R {
+        if item_ == "μ" {
+            // Check for small sample
+            var score: R!
+            if useTDist {
+                score = ConfidenceInterval.tDistribution(ν: n - 1, α: (1 - level) / (oneSided ? 1 : 2))
+            }
+            else {
+                score = ConfidenceInterval.zscore(forLevel: level, oneSided: oneSided)
+            }
+            
+            return score * sample.stdev / sqrt(intToℝ(n))
+        }
+        else {
+            fatalError("Unknown test")
+        }
+    }
+    
+    var sample: SampleOrPopulation
+    var smallSample: Bool { n <= 30 }
+    var n: Int { sample.nOrN }
+    override var useTDist: Bool { smallSample }
+    
+    var firstMinusSecondIsGood: Bool
 }
