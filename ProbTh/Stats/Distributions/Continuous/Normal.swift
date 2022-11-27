@@ -119,9 +119,6 @@ class Normal: SampleOrPopulation, Distribution {
         let tmp = 0.5 * (1 + erf(z / sqrt(2.0)))
         return tmp
     }
-    private static func equalByEpsilon(_ a: Double, _ b: Double, epsilon: Double) -> Bool {
-        return abs(a - b) < epsilon
-    }
     static func zscore (for percentile: Double) -> Double {
         // Brute-force hack:
         let accuracy = 15.0

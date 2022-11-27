@@ -8,10 +8,12 @@
 
 import Foundation
 
+// Returns the sample correlation coefficient r.
 func correlation(_ xAndY: [(R, R)]) -> R {
     return correlation(Sample(xAndY.map{$0.0}), Sample(xAndY.map{$0.1}))
 }
 
+// Returns the sample correlation coefficient r.
 func correlation(_ s1: Sample, _ s2: Sample) -> R {
     assert(s1.nOrN == s2.nOrN)
     let sum1 = (1...s1.nOrN).reduce(0, {acc,i in acc + s1.sampleOrPopulation.i(i) * s2.sampleOrPopulation.i(i)})

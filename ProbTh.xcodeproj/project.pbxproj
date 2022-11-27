@@ -14,6 +14,8 @@
 		3028121C28ED239100D63CE0 /* Exp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028121B28ED239100D63CE0 /* Exp.swift */; };
 		3028121E28EDD97900D63CE0 /* Geom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028121D28EDD97900D63CE0 /* Geom.swift */; };
 		3028122228EDDAB000D63CE0 /* RealNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028122128EDDAB000D63CE0 /* RealNumbers.swift */; };
+		30336F1B29342731006F6251 /* LeastSquaresLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30336F1A29342731006F6251 /* LeastSquaresLine.swift */; };
+		30336F1D29342CAE006F6251 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30336F1C29342CAE006F6251 /* Utils.swift */; };
 		303691DE2912025E006D7DA8 /* HypothesisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303691DD2912025E006D7DA8 /* HypothesisTests.swift */; };
 		303D475428EDDE9500E91D3C /* NB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475328EDDE9500E91D3C /* NB.swift */; };
 		303D475728EDE40E00E91D3C /* H.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303D475628EDE40E00E91D3C /* H.swift */; };
@@ -73,6 +75,8 @@
 		3028121B28ED239100D63CE0 /* Exp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exp.swift; sourceTree = "<group>"; };
 		3028121D28EDD97900D63CE0 /* Geom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geom.swift; sourceTree = "<group>"; };
 		3028122128EDDAB000D63CE0 /* RealNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealNumbers.swift; sourceTree = "<group>"; };
+		30336F1A29342731006F6251 /* LeastSquaresLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeastSquaresLine.swift; sourceTree = "<group>"; };
+		30336F1C29342CAE006F6251 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		303691DD2912025E006D7DA8 /* HypothesisTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HypothesisTests.swift; sourceTree = "<group>"; };
 		303D475328EDDE9500E91D3C /* NB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NB.swift; sourceTree = "<group>"; };
 		303D475628EDE40E00E91D3C /* H.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = H.swift; sourceTree = "<group>"; };
@@ -215,6 +219,7 @@
 				303691DD2912025E006D7DA8 /* HypothesisTests.swift */,
 				30D0F35E291E034900470180 /* ChiSquaredTests.swift */,
 				30E98CBB292742E700C3BA26 /* Correlation.swift */,
+				30336F1A29342731006F6251 /* LeastSquaresLine.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				30D3292C28B1983200150DE2 /* PMF.swift */,
 				309409D828D3BC8B000B1AC6 /* BridgingHeader.h */,
 				3028122128EDDAB000D63CE0 /* RealNumbers.swift */,
+				30336F1C29342CAE006F6251 /* Utils.swift */,
 			);
 			path = ProbTh;
 			sourceTree = "<group>";
@@ -384,10 +390,12 @@
 				30D3292128AC23C500150DE2 /* Theory.swift in Sources */,
 				303D475928EDE53000E91D3C /* Distribution.swift in Sources */,
 				3071C74928BFE2F400B07AEE /* HW1.swift in Sources */,
+				30336F1D29342CAE006F6251 /* Utils.swift in Sources */,
 				3001039528EFE35000121D19 /* Weibull.swift in Sources */,
 				30D3292328AC274F00150DE2 /* AxiomsOfProbability.swift in Sources */,
 				30EEFFBD28FCE0750061DCE9 /* ConfidenceInterval.swift in Sources */,
 				303D475F28EF205800E91D3C /* Normal.swift in Sources */,
+				30336F1B29342731006F6251 /* LeastSquaresLine.swift in Sources */,
 				3028121E28EDD97900D63CE0 /* Geom.swift in Sources */,
 				30E98CBC292742E700C3BA26 /* Correlation.swift in Sources */,
 				303691DE2912025E006D7DA8 /* HypothesisTests.swift in Sources */,
