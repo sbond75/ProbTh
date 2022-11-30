@@ -39,6 +39,7 @@ enum Relation: CustomStringConvertible {
 struct HypothesisTest: CustomStringConvertible {
     var lhs_0: R
     var lhsStatus: Relation
+    var isTwoSided: Bool { lhsStatus == .equalTo || lhsStatus == .notEqualTo }
     var isH0: Bool
     var isH1: Bool { !isH0 }
     var lhs: String // Something like "μ". The left-hand side (lhs) of the HypothesisTest.
@@ -211,4 +212,97 @@ struct PValue {
 //        
 //        return ht.pvalue(Z: testStatistic)
 //    }
+    
+    static func criticalPoints(of ht: HypothesisTest, givenSampleSize sampleSize: Int, andStdev stdev: R,
+                               withSignificanceLevel alpha: __0iTo1i) -> [CP] {
+        assert(ht.isH0) // Otherwise, not yet implemented. (H1 shouldn't be too bad to check for -- invert all conditions maybe?)
+        assert(ht.lhs == "μ")
+        
+        let nd = NormalWithN(sampleSize: sampleSize, mean: ht.lhs_0, stdev: stdev) // Null distribution
+        return criticalPoints(of: ht, givenNullDist: nd, withSignificanceLevel: alpha)
+    }
+
+    static internal func computeAlpha(originalAlpha alpha: __0iTo1i, gt: Bool, twoSided: Bool) -> R {
+        let alpha_ = gt ? 1 - alpha.ℝ_0to1 : alpha.ℝ_0to1 // NOTE: Slightly hacky..
+        let alpha__ = twoSided ? alpha_ / 2 : alpha_
+        return alpha__
+    }
+    static func criticalPoints(of ht: HypothesisTest, givenNullDist nd: Normal,
+                               withSignificanceLevel alpha: __0iTo1i) -> [CP] {
+        assert(ht.isH0) // Otherwise, not yet implemented. (H1 shouldn't be too bad to check for -- invert all conditions maybe?)
+        assert(ht.lhs == "μ")
+        
+        let twoSided = ht.isTwoSided
+        if twoSided {
+            // Two CP's
+            
+            let alpha__ = computeAlpha(originalAlpha: alpha, gt: false, twoSided: twoSided)
+            let z = doubleToℝ(Normal.Z(alpha: ℝtoDouble(alpha__)))
+            let cp = nd.zToX(z)
+
+            let alpha__2 = computeAlpha(originalAlpha: alpha, gt: false, twoSided: twoSided)
+            let z2 = -doubleToℝ(Normal.Z(alpha: ℝtoDouble(alpha__2)))
+            let cp2 = nd.zToX(z2)
+            
+            return [CP(criticalPoint: cp, pvalue: ht.pvalue(Z: z), xIsGreaterThanOrEqualToCP: true),
+                    CP(criticalPoint: cp2, pvalue: ht.pvalue(Z: z2), xIsGreaterThanOrEqualToCP: false)]
+        }
+        else {
+            // One CP
+
+            let gt = ht.lhsStatus == .greaterThan || ht.lhsStatus == .greaterThanOrEqualTo
+            let alpha__ = computeAlpha(originalAlpha: alpha, gt: gt, twoSided: twoSided)
+            let z = doubleToℝ(Normal.Z(alpha: ℝtoDouble(alpha__)))
+            let cp = nd.zToX(z)
+            return [CP(criticalPoint: cp, pvalue: ht.pvalue(Z: z), xIsGreaterThanOrEqualToCP: !gt /* `!gt` because we are using Alt hyp (H1) gotten based on H0 (so it's `!` because H0 is the opposite of H1)*/)]
+        }
+    }
+
+    // Power = area within the rejection region under the alternate distribution given.
+    // {Demo:
+    // PValue.power(of: PValue.criticalPoints(of: HypothesisTest(lhs_0: 80, lhsStatus: .lessThanOrEqualTo, isH0: true, lhs: "μ"), givenNullDist: NormalWithN(sampleSize: 50, mean: 80, stdev: 5), withSignificanceLevel: __0iTo1i(ℝ_0to1: 0.05))[0], underAltDist: NormalWithN(sampleSize: 50, mean: 81, stdev: 5))
+    // becomes: 0.409543
+    // }
+    static func power(of cp: CP, underAltDist altDist: Normal) -> R {
+        assert(cp.pvalue.oneSided) // Otherwise not implemented (not covered in class)
+        
+        let x = altDist.xToZ(cp.criticalPoint)
+        let temp = doubleToℝ(Normal.percentile(zscore: ℝtoDouble(x)))
+        if cp.xIsGreaterThanOrEqualToCP {
+            return 1 - temp
+        }
+        else {
+            return temp // TODO: is this part correct?
+        }
+    }
+}
+
+struct CP {
+    let criticalPoint: R
+    let pvalue: PValue
+    
+    // Whether X is greater than or equal to the criticalPoint. This constitutes the rejection region.
+    let xIsGreaterThanOrEqualToCP: Bool
+    // Whether X is less than or equal to the criticalPoint. This constitutes the rejection region.
+    var xIsLessThanOrEqualToCP: Bool { !xIsGreaterThanOrEqualToCP }
+}
+
+// Normal distribution constructed from a known sample size
+class NormalWithN: Normal {
+    // MARK: SampleOrPopulation
+    
+    override var nOrN: Int { n }
+    internal var n: Int
+    
+    // MARK: NormalWithN
+
+    init(sampleSize n: Int, mean: R, variance: R) {
+        self.n = n
+        super.init(mean: mean, variance: variance / intToℝ(n))
+    }
+    
+    init(sampleSize n: Int, mean: R, stdev: R) {
+        self.n = n
+        super.init(mean: mean, variance: stdev * stdev / intToℝ(n))
+    }
 }

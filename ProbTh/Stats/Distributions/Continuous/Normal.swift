@@ -140,10 +140,10 @@ class Normal: SampleOrPopulation, Distribution {
     // Notation type of thing. This gives the zscore with area alpha to its right.
     static func Z(alpha: Double) -> Double {
         let retval = zscore(for: 1 - alpha)
-        let funFact = -zscore(for: alpha)
-        let epsilon = (2.59 - 2.56) / (alpha * 20 * (alpha > 0.5 ? 10 : 1)) /* <-- note: this is an empirically derived formula by me. as alpha gets bigger, the difference between `retval` and `funFact` seems to get bigger too. */    /*0.0105*/ /*0.0015*/
-        //print("\(retval) should be nearly equal to \(funFact) by epsilon \(epsilon)")
-        assert(equalByEpsilon(retval, funFact, epsilon: epsilon), "Expected \(retval) to be nearly equal to \(funFact) by epsilon \(epsilon)") // Fun fact: these are equal. (Due to Swift implementation not using the z-table on http://www.z-table.com/ we have to have some epsilon for comparing here.)
+//        let funFact = -zscore(for: alpha)
+//        let epsilon = (2.59 - 2.56) / (alpha * 20 * (alpha > 0.5 ? 10 : 1)) /* <-- note: this is an empirically derived formula by me. as alpha gets bigger, the difference between `retval` and `funFact` seems to get bigger too. */    /*0.0105*/ /*0.0015*/
+//        //print("\(retval) should be nearly equal to \(funFact) by epsilon \(epsilon)")
+//        assert(equalByEpsilon(retval, funFact, epsilon: epsilon), "Expected \(retval) to be nearly equal to \(funFact) by epsilon \(epsilon)") // Fun fact: these are equal. (Due to Swift implementation not using the z-table on http://www.z-table.com/ we have to have some epsilon for comparing here.)
         return retval
     }
     
